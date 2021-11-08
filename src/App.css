@@ -1,38 +1,222 @@
 .App {
+  position: relative;
+  display: flex;
   text-align: center;
+  height: 100vh;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.LoginContainer{
+  position: relative;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: nowrap;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.LoginPanelImageOverlay{
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(245, 245, 245, 0.05)0%, rgba(245, 245, 245, 0.15) 85%, rgba(245, 245, 245, 0.5) 98%, rgba(245, 245, 245, 0.98) 100%);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.LoginPanelImage{
+  position: relative;
+  display: flex;
+  background-color: transparent;
+  width: 60%;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.LoginPanelCurrentImage{
+  position: absolute;
+  height: 100%;
+}
+
+.LoginPanelImageBar{
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  bottom:75px;
+  background-color: rgba(245, 245, 245, 0.2);
+  border-radius: 20px;
+  height: auto;
+  width: auto;
+}
+
+.LoginPanelImageIcon{
+  position: relative;
+  border-radius: 50px;
+  height: 50px;
+  width: 50px;
+  margin: 10px;
+  transition: transform 500ms ease-in-out;
+}
+
+.LoginPanelImageIcon:hover{
+  transform: scale(1.23);
+}
+
+.enlarge{
+  transform: scale(1.23);
+}
+
+.LoginPanelForm{
+  position: relative;
+  background-color: whitesmoke;
+  width: 40%;
+}
+
+.LoginPanelFormSec{
+  position: relative;
+  top: 100px;
   display: flex;
   flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.LoginPanelIcon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  width: 200px;
+  background: rgb(225, 225, 225);
+  border-radius: 150px;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.LoginPanelIcon img{
+  height: 120px;
+  width: 120px;
+}
+
+.LoginPanelFormSec form{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.LoginPanelFormSec input{
+  background: rgb(225, 225, 225);
+  border-radius: 15px;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  padding-left: 10px;
+  height: 40px;
+  width: 300px;
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+.RememberMe{
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  width: 150px;
+  justify-content: space-evenly;
+  margin: 0 0 20px 0;
+}
+
+.RememberMe input{
+  height: 20px;
+  width: 20px;
+  margin: 0;
+}
+
+.LoginPanelFormSubmit{
+  height: 35px;
+  width: 200px;
+  border-radius: 15px;
+  border: none;
+  background: linear-gradient(160deg, rgb(114, 223, 42)10%, rgb(72, 129, 18)100% );
+  color: whitesmoke;
+  font-size: 18px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.LoginPanelFormLogoSec{
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-radius: 20px;
+}
+
+.LoginPanelFormLogo{
+  position: relative;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background: linear-gradient(135deg, rgb(255, 255, 255) 0%, rgb(231, 231, 238) 75%, rgb(214, 216, 235) 90%);
+  border-radius: 150px;
+  height: 100px;
+  width: 100px;
+  margin: 10px 20px 10px 10px;
+  overflow: hidden;
 }
 
-.App-link {
-  color: #61dafb;
+.LoginPanelFormLogo img{
+  height: 80px;
+  width: 80px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.LoginPanelFormTitle{
+  position: relative;
+  top: 1.5em;
+  display: flex;
+  width: 200px;
+  height: fit-content;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  margin: 0 10px 0 0;
+}
+
+.LoginPanelFormTitle p{
+  font-size: 30px;
+  font-weight: 550;
+  margin: 0;
+  background: -webkit-linear-gradient(100deg, rgb(56, 133, 4)0%, rgb(98, 156, 43)45%, rgb(109, 170, 52)75% );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.Divider{
+  position: relative;
+  border-top: 6px solid lightgrey;
+  width: 90%;
 }
