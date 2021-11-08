@@ -12,22 +12,24 @@ function LoginPanelImage({isLoggedIn}){
     ]
 
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
+    const [resetStyle, setResetStyle] = useState(false)
     const cycleTimerMS = 8000
 
     useEffect(()=>{
         if(isLoggedIn) return;
+        setTimeout(()=>setResetStyle(true), 200)
         const imagesArrayCyclerID = setInterval(imagesArrayCycler, cycleTimerMS)
-
         return ()=> clearInterval(imagesArrayCyclerID)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[isLoggedIn, currentImageIndex])
 
 
     function imagesArrayCycler(){
+        setResetStyle(false)
         if (currentImageIndex < imagesArray.length-1){
-            setCurrentImageIndex(currentImageIndex => currentImageIndex+1)
+            return setCurrentImageIndex(currentImageIndex => currentImageIndex+1)
         }else{
-            setCurrentImageIndex(0)
+            return setCurrentImageIndex(0)
         }
     }
 
@@ -48,7 +50,7 @@ function LoginPanelImage({isLoggedIn}){
     return(
         <div className="LoginPanelImage">
             <div className="LoginPanelImageOverlay"></div>
-            <img className={`LoginPanelCurrentImage`} src={imagesArray[currentImageIndex]} alt={imagesArray[currentImageIndex]}/>
+            <img className={`LoginPanelCurrentImage ${resetStyle? "fade-in" : ""}`} src={imagesArray[currentImageIndex]} alt={imagesArray[currentImageIndex]}/>
             <div className="LoginPanelImageBar">
                 {loginPanelImageIcon}
             </div>

@@ -18,7 +18,7 @@ function LoginPanelForm({BACK_END_URL}){
     }
 
     function onClickLoginSubmit(){
-        if(formData.company === "" || formData.username === "" || formData.password === "") return setErrorMessage("Fill out All Empty Fields");
+        if(formData.company === "" || formData.username === "" || formData.password === "") return setErrorMessage("Fill Out All Empty Fields");
         // let bearer = 'Bearer ' + bearer_token;
         
         const headers = {
@@ -56,7 +56,9 @@ function LoginPanelForm({BACK_END_URL}){
                     </div>
                 </form>
                 <button className="LoginPanelFormSubmit" onClick={onClickLoginSubmit}>LOGIN</button>
-                <div className="LoginPanelFormErrors">{errorMessage}</div>
+                <div className="LoginPanelFormErrors">
+                    <p>{errorMessage}</p>
+                </div>
             </div>
         </div>
     )

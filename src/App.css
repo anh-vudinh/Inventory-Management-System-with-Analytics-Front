@@ -3,7 +3,7 @@
   display: flex;
   text-align: center;
   height: 100vh;
-
+  background-color: whitesmoke;
 }
 
 .LoginContainer{
@@ -34,6 +34,7 @@
 .LoginPanelCurrentImage{
   position: absolute;
   height: 100%;
+  opacity: 0;
 }
 
 .LoginPanelImageBar{
@@ -68,7 +69,6 @@
 
 .LoginPanelForm{
   position: relative;
-  background-color: whitesmoke;
   width: 40%;
 }
 
@@ -145,7 +145,16 @@
   font-size: 18px;
 }
 
+.LoginPanelFormErrors{
+  color: red;
+  font-size: 18px;
+  font-weight: 600;
+}
 
+.fade-in{
+  opacity: 1;
+  transition: opacity 800ms linear;
+}
 
 
 
