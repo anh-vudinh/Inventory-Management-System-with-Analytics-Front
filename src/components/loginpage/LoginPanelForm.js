@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import PersonIcon from '../../assets/PersonIcon.png'
+import LoginPanelFormFooter from './LoginPanelFormFooter'
 
 function LoginPanelForm({BACK_END_URL}){
 
@@ -35,7 +36,7 @@ function LoginPanelForm({BACK_END_URL}){
             timeout: 5000
         }
 
-        fetch(`${BACK_END_URL}/sessions`, headers)
+        fetch(`${BACK_END_URL}/sessions/login`, headers)
         .then(resp => resp.json())
         .then(data => console.log(data))
     }
@@ -60,6 +61,7 @@ function LoginPanelForm({BACK_END_URL}){
                     <p>{errorMessage}</p>
                 </div>
             </div>
+            <LoginPanelFormFooter/>
         </div>
     )
 }

@@ -27,6 +27,7 @@
   display: flex;
   background-color: transparent;
   width: 60%;
+  height: 100%;
   justify-content: center;
   overflow: hidden;
 }
@@ -70,11 +71,12 @@
 .LoginPanelForm{
   position: relative;
   width: 40%;
+  height: 100%;
 }
 
 .LoginPanelFormSec{
   position: relative;
-  top: 100px;
+  top: 140px;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -156,8 +158,19 @@
   transition: opacity 800ms linear;
 }
 
+.LoginPanelFormFooter{
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  background: linear-gradient(168deg, whitesmoke 0%, rgb(212, 212, 212) 80%);
+}
 
-
+.LoginPanelFormFooter p{
+  font-size: 14px;
+  color: gray;
+}
 
 
 
