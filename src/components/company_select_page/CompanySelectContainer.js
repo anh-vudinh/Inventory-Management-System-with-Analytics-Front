@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react'
+import { Redirect } from "react-router-dom";
 import CompanySelectChildren from './CompanySelectChildren'
 import CompanySelectHeader from './CompanySelectHeader'
 import CompanySelectParents from './CompanySelectParents'
 import MinusIcon from '../../assets/MinusIcon.png'
 import PlusIcon from '../../assets/PlusIcon.png'
 
-function CompanySelectContainer({currentUser}){
+function CompanySelectContainer({currentUser, isLoggedIn}){
 
     const [selectedCompany, setSelectedCompany] = useState("")
     const [selectedParentCategory, setSelectedParentCategory] = useState(true)
@@ -15,6 +16,10 @@ function CompanySelectContainer({currentUser}){
     useEffect(()=>{
         //fetch user.companies
     },[])
+
+    if(!isLoggedIn){
+        return <Redirect to="/"/>
+    }
 
     return(
         <div className="CompanySelectContainer">

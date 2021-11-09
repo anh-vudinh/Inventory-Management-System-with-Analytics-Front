@@ -15,6 +15,10 @@ function LoginPanelForm({BACK_END_URL, currentUser, setCurrentUser, isLoggedIn, 
     const [formData, setFormData] = useState(formDataDefault)
     const [errorMessage, setErrorMessage] = useState("")
 
+    if(isLoggedIn){
+        return <Redirect to="/company_select"/>
+    }
+
     function onChangeFormInput(e){
         setFormData({...formData, [e.target.name]: e.target.value})
     }
@@ -48,10 +52,6 @@ function LoginPanelForm({BACK_END_URL, currentUser, setCurrentUser, isLoggedIn, 
                 })
             }
         })
-    }
-
-    if(isLoggedIn){
-        return <Redirect to="/company_select"/>
     }
 
     return(

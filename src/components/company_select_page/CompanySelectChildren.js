@@ -4,10 +4,12 @@ function CompanySelectChildren({selectedParentCategory, setSelectedParentCategor
 
     return(
         <div className={`CompanySelectChildren ${selectedParentCategory? "" : "csExpand"}`}>
-            <p className="CompanySelectChildrenTitle" onClick={()=>setSelectedParentCategory(selectedParentCategory => !selectedParentCategory)}>
+
+            <div className="CompanySelectChildrenTitle" onClick={()=>setSelectedParentCategory(selectedParentCategory => !selectedParentCategory)}>
                 <img src={selectedParentCategory?  PlusIcon : MinusIcon} alt="-/+"/>
                 <p>Child Companies</p>
-            </p>
+            </div>
+            
         </div>
     )
 }

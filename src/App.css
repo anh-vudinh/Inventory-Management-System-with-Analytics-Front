@@ -219,6 +219,7 @@
   width: 100%;
   height: 30px;
   background-color: red;
+  overflow: hidden;
   transition: height 800ms ease-in-out;
 }
 

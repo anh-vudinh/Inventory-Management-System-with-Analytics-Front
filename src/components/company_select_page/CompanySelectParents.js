@@ -11,7 +11,6 @@ function CompanySelectParents({selectedParentCategory, setSelectedParentCategory
                 <p>Parent Companies</p>
             </div>
 
-
         </div>
     )
 }
