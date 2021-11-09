@@ -6,9 +6,8 @@ function LoginContainer({isLoggedIn, setIsLoggedIn, BACK_END_URL, currentUser, s
 
     return(
         <div className="LoginContainer">
-            <LoginPanelImage
-                isLoggedIn={isLoggedIn}
-            />
+            <LoginPanelImage/>
+            
             <LoginPanelForm
                 BACK_END_URL={BACK_END_URL}
                 currentUser={currentUser} setCurrentUser={setCurrentUser}

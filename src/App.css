@@ -57,15 +57,18 @@
   height: 50px;
   width: 50px;
   margin: 10px;
-  transition: transform 500ms ease-in-out;
+  filter: brightness(45%);
+  transition: transform 500ms ease-in, filter 500ms ease-in;
 }
 
 .LoginPanelImageIcon:hover{
   transform: scale(1.23);
+  filter: brightness(1)
 }
 
 .enlarge{
   transform: scale(1.23);
+  filter: brightness(1)
 }
 
 .LoginPanelForm{

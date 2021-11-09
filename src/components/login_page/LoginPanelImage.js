@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import LoginPanelImageIcon from './LoginPanelImageIcon'
 
-function LoginPanelImage({isLoggedIn}){
+function LoginPanelImage(){
 
     const imagesArray = [
         'https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.utwente.nl%2F.uc%2Fi882c97f601026fc6250057fc4502f49e5268ce37db8a0701c3dc05000080%2Flasrobot.jpg&f=1&nofb=1',
@@ -16,12 +16,11 @@ function LoginPanelImage({isLoggedIn}){
     const cycleTimerMS = 8000
 
     useEffect(()=>{
-        if(isLoggedIn) return;
         setTimeout(()=>setResetStyle(true), 200)
         const imagesArrayCyclerID = setInterval(imagesArrayCycler, cycleTimerMS)
         return ()=> clearInterval(imagesArrayCyclerID)
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[isLoggedIn, currentImageIndex])
+    },[currentImageIndex])
 
 
     function imagesArrayCycler(){
