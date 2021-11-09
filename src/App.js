@@ -23,7 +23,9 @@ function App() {
         </Route>
 
         <Route path="/company_select">
-          <CompanySelectContainer/>
+          <CompanySelectContainer
+            currentUser={currentUser}
+          />
         </Route>
 
       </Switch>
