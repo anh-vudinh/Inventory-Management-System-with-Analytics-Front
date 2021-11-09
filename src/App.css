@@ -19,7 +19,7 @@
   z-index: 1;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, rgba(245, 245, 245, 0.05)0%, rgba(245, 245, 245, 0.15) 85%, rgba(245, 245, 245, 0.5) 98%, rgba(245, 245, 245, 0.98) 100%);
+  background: linear-gradient(90deg, rgba(245, 245, 245, 0.05)95%, rgba(245, 245, 245, 0.15) 96%, rgba(245, 245, 245, 0.5) 98%, rgba(245, 245, 245, 0.98) 100%);
 }
 
 .LoginPanelImage{
@@ -70,17 +70,29 @@
 
 .LoginPanelForm{
   position: relative;
+  display: flex;
+  flex-direction: column;
   width: 40%;
   height: 100%;
+  overflow-y: hidden;
+  flex-wrap: nowrap;
+  justify-content: space-between;
 }
 
-.LoginPanelFormSec{
-  position: relative;
-  top: 140px;
+.LoginPanelFormSecOuter{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+}
+
+.LoginPanelFormSecInner{
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: center;
+  height: fit-content;
+  margin-top: 10%;
 }
 
 .LoginPanelIcon{
@@ -92,7 +104,7 @@
   background: rgb(225, 225, 225);
   border-radius: 150px;
   overflow: hidden;
-  margin-bottom: 40px;
+  margin: 40px 0 60px 0;
 }
 
 .LoginPanelIcon img{
@@ -100,14 +112,14 @@
   width: 120px;
 }
 
-.LoginPanelFormSec form{
+.LoginPanelFormSecInner form{
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: center;
 }
 
-.LoginPanelFormSec input{
+.LoginPanelFormSecInner input{
   background: rgb(225, 225, 225);
   border-radius: 15px;
   border: none;
@@ -159,7 +171,7 @@
 }
 
 .LoginPanelFormFooter{
-  position: absolute;
+  position: relative;
   bottom: 0;
   display: flex;
   justify-content: space-around;

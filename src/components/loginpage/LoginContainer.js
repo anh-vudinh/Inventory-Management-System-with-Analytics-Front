@@ -3,7 +3,7 @@ import LoginPanelForm from './LoginPanelForm'
 import LoginPanelImage from './LoginPanelImage'
 import TreeIcon from '../../assets/TreeIcon.png'
 
-function LoginContainer({isLoggedIn, setIsLoggedIn, BACK_END_URL}){
+function LoginContainer({isLoggedIn, setIsLoggedIn, BACK_END_URL, currentUser, setCurrentUser}){
 
     return(
         <div className="LoginContainer">
@@ -22,6 +22,7 @@ function LoginContainer({isLoggedIn, setIsLoggedIn, BACK_END_URL}){
             />
             <LoginPanelForm
                 BACK_END_URL={BACK_END_URL}
+                currentUser={currentUser} setCurrentUser={setCurrentUser}
             />
         </div>
     )
