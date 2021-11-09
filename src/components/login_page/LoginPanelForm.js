@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
+import { Redirect } from "react-router-dom";
 import PersonIcon from '../../assets/PersonIcon.png'
 import LoginPanelFormFooter from './LoginPanelFormFooter'
-import Cookies from 'universal-cookie';
 
-function LoginPanelForm({BACK_END_URL, currentUser, setCurrentUser}){
+function LoginPanelForm({BACK_END_URL, currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn}){
 
     const formDataDefault = {
         company: "",
@@ -20,8 +20,9 @@ function LoginPanelForm({BACK_END_URL, currentUser, setCurrentUser}){
     }
 
     function onClickLoginSubmit(){
+        setErrorMessage("")
         if(formData.company === "" || formData.username === "" || formData.password === "") return setErrorMessage("Fill Out All Empty Fields");
-        
+
         const headers = {
             method: 'POST',
             withCredentials: true,
@@ -37,13 +38,20 @@ function LoginPanelForm({BACK_END_URL, currentUser, setCurrentUser}){
         fetch(`${BACK_END_URL}/api/login`, headers)
         .then(resp => {
             if(resp.ok){
-                resp.json()
-                .then(user=> {
-                    console.log(user)
-                    setCurrentUser(user)
+                resp.json().then(data => {
+                    setCurrentUser(data.username)
+                    setIsLoggedIn(true)
+                })
+            }else{
+                resp.json().then(message => {
+                    setErrorMessage(message.error)
                 })
             }
         })
+    }
+
+    if(isLoggedIn){
+        return <Redirect to="/company_select"/>
     }
 
     return(

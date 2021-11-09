@@ -1,6 +1,8 @@
 import './App.css';
-import React, {useState} from 'react';
-import LoginContainer from './components/loginpage/LoginContainer';
+import React, { useState } from 'react';
+import { Switch, Route } from "react-router-dom";
+import LoginContainer from './components/login_page/LoginContainer';
+import CompanySelectContainer from './components/company_select_page/CompanySelectContainer';
 
 function App() {
 
@@ -10,11 +12,22 @@ function App() {
 
   return (
     <div className="App">
-      <LoginContainer
-        isLoggedIn={isLoggedIn} setIsLoggedIN={setIsLoggedIn}
-        currentUser={currentUser} setCurrentUser={setCurrentUser}
-        BACK_END_URL={BACK_END_URL}
-      />
+      <Switch>
+
+        <Route exact path="/">
+          <LoginContainer
+            isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}
+            currentUser={currentUser} setCurrentUser={setCurrentUser}
+            BACK_END_URL={BACK_END_URL}
+          />
+        </Route>
+
+        <Route path="/company_select">
+          <CompanySelectContainer/>
+        </Route>
+
+      </Switch>
+
     </div>
   );
 }
