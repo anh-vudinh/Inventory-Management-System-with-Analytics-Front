@@ -14,8 +14,8 @@ function CompanySelectCard({company}){
         {"Limited Liability Company": "LLC"}
     ]
 
-    const companyType = objectAssociations.filter(object => Object.keys(object)[0] === company_type)
-    const companyStructure = objectAssociations.filter(object => Object.keys(object)[0] === company_structure)
+    const companyType = objectAssociations.find(object => Object.keys(object)[0] === company_type)
+    const companyStructure = objectAssociations.find(object => Object.keys(object)[0] === company_structure)
 
     return(
         <div className="CompanySelectCard">
@@ -40,8 +40,8 @@ function CompanySelectCard({company}){
                     <p>{`Structure: ${company_structure}`}</p>
                 </div>
                 <div className="CompanySelectDetailsIcons">
-                    <img src={Object.values(companyType[0])[0]} alt={company_type} title={company_type}/>
-                    <p title={company_structure}>{Object.values(companyStructure[0])[0]}</p>
+                    <img src={Object.values(companyType)[0]} alt={company_type} title={company_type}/>
+                    <p title={company_structure}>{Object.values(companyStructure)[0]}</p>
                 </div>
             </div>
         </div>
