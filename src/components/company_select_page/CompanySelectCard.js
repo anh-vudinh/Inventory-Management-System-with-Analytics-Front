@@ -17,6 +17,8 @@ function CompanySelectCard({company}){
     const companyType = objectAssociations.find(object => Object.keys(object)[0] === company_type)
     const companyStructure = objectAssociations.find(object => Object.keys(object)[0] === company_structure)
 
+    const companyDetailsArray = ["Location", "Industry", "Employees", "Children"]
+
     return(
         <div className="CompanySelectCard">
             <div className="CompanySelectCardTitle">
@@ -36,8 +38,6 @@ function CompanySelectCard({company}){
                 <div className="CompanySelectDetailsText">
                     <p>{`Location: ${location}`}</p>
                     <p>{`Industry: ${company_model}`}</p>
-                    <p>{`Type: ${company_type}`}</p>
-                    <p>{`Structure: ${company_structure}`}</p>
                 </div>
                 <div className="CompanySelectDetailsIcons">
                     <img src={Object.values(companyType)[0]} alt={company_type} title={company_type}/>

@@ -273,6 +273,15 @@
   border-radius: 10px;
   overflow: hidden;
   background-color: rgb(72, 129, 18);
+  border: 1px solid #888;
+  -moz-box-shadow: 0 0 3px #ccc;
+  -webkit-box-shadow: 0 0 3px #ccc;
+  box-shadow: 0 0 10px rgba(15, 15, 15, 0.8);
+  transition: transform 200ms linear;
+}
+
+.CompanySelectCard:hover{
+  transform: scale(1.01);
 }
 
 .CompanySelectCardTitle{
