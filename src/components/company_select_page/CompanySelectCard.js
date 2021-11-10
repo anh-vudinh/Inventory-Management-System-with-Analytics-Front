@@ -1,6 +1,7 @@
 import React from 'react'
+import CompanySelectCardActions from './CompanySelectCardActions'
 
-function CompanySelectCard({company}){
+function CompanySelectCard({company, selectedCompany, setSelectedCompany, childCompanyArray, setChildCompanyArray}){
     const {name, image, location, description, is_parent, company_structure, company_type, company_model, employees, children} = company
     
     const genericLogo = "https://istvankocsis.gallerycdn.vsassets.io/extensions/istvankocsis/reactcodesnippets/3.1/1582843313592/Microsoft.VisualStudio.Services.Icons.Default"
@@ -38,46 +39,55 @@ function CompanySelectCard({company}){
     )
 
     return(
-        <div className="CompanySelectCard">
-            <div className="CompanySelectCardTitle">
-                <div className="CompanySelectCardTitleText">
-                    <p>{name}</p>
-                </div>
-                <div className="CompanySelectCardImage">
-                    <img src={!image? genericLogo : image} alt="name"/>
-                </div>
-            </div>
-
-            <div className="CompanySelectSnapshot">
-                <div className="CompanySelectSnapshotTitle"> 
-                    <p> $1,000,000 (placeholder)</p>
-                </div>
-                <div className="CompanySelectSnapshotAsset">
-                    <p>Assets:</p>
-                </div>
-                <div className="CompanySelectSnapshotLiability">
-                    <p>Liabilities:</p>
-                </div>
-                <div className="CompanySelectSnapshotEquity">
-                    <p>Equity:</p>
-                </div>
-            </div>
-            <div className="CompanySelectDetails">
-                <div className="CompanySelectDetailsTextContainer">
-                    <div className="CompanySelectDetailsTextA">
-                        {companyDetailsA}
+        <div className="CompanySelectCardContainer">
+            <div className="CompanySelectCard">
+                <div className="CompanySelectCardTitle">
+                    <div className="CompanySelectCardTitleText">
+                        <p>{name}</p>
                     </div>
-                    <div className="CompanySelectDetailsTextB">
-                        {companyDetailsB}
+                    <div className="CompanySelectCardImage">
+                        <img src={!image? genericLogo : image} alt="name"/>
                     </div>
                 </div>
 
-                <div className="CompanySelectDetailsIcons">
-                    <img src={Object.values(companyType)[0]} alt={company_type} title={company_type}/>
-                    <p title={company_structure}>{Object.values(companyStructure)[0]}</p>
+                <div className="CompanySelectSnapshot">
+                    <div className="CompanySelectSnapshotTitle"> 
+                        <p> $1,000,000 (placeholder)</p>
+                    </div>
+                    <div className="CompanySelectSnapshotAsset">
+                        <p>Assets:</p>
+                    </div>
+                    <div className="CompanySelectSnapshotLiability">
+                        <p>Liabilities:</p>
+                    </div>
+                    <div className="CompanySelectSnapshotEquity">
+                        <p>Equity:</p>
+                    </div>
+                </div>
+                <div className="CompanySelectDetails">
+                    <div className="CompanySelectDetailsTextContainer">
+                        <div className="CompanySelectDetailsTextA">
+                            {companyDetailsA}
+                        </div>
+                        <div className="CompanySelectDetailsTextB">
+                            {companyDetailsB}
+                        </div>
+                    </div>
+
+                    <div className="CompanySelectDetailsIcons">
+                        <img src={Object.values(companyType)[0]} alt={company_type} title={company_type}/>
+                        <p title={company_structure}>{Object.values(companyStructure)[0]}</p>
+                    </div>
                 </div>
             </div>
+
+            <CompanySelectCardActions 
+                company={company}
+                selectedCompany={selectedCompany} setSelectedCompany={setSelectedCompany}
+                childCompanyArray={childCompanyArray} setChildCompanyArray={setChildCompanyArray}
+            />
         </div>
+        
     )
 }
 

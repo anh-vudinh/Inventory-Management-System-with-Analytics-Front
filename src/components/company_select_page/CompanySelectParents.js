@@ -2,7 +2,7 @@ import React from 'react'
 import CompanySelectCardContainer from './CompanySelectCardContainer'
 
 
-function CompanySelectParents({parentCompanyArray, selectedParentCategory, setSelectedParentCategory, MinusIcon, PlusIcon}){
+function CompanySelectParents({childCompanyArray, setChildCompanyArray, selectedCompany, setSelectedCompany, parentCompanyArray, selectedParentCategory, setSelectedParentCategory, MinusIcon, PlusIcon}){
 
 
     return(
@@ -15,6 +15,8 @@ function CompanySelectParents({parentCompanyArray, selectedParentCategory, setSe
 
             <CompanySelectCardContainer 
                 cardContainerArray={parentCompanyArray}
+                selectedCompany={selectedCompany} setSelectedCompany={setSelectedCompany}
+                childCompanyArray={childCompanyArray} setChildCompanyArray={setChildCompanyArray}
             />
         </div>
     )
