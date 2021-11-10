@@ -1,7 +1,9 @@
 import React from 'react'
+import CompanySelectCardContainer from './CompanySelectCardContainer'
 
 
-function CompanySelectParents({selectedParentCategory, setSelectedParentCategory, MinusIcon, PlusIcon}){
+function CompanySelectParents({parentCompanyArray, selectedParentCategory, setSelectedParentCategory, MinusIcon, PlusIcon}){
+
 
     return(
         <div className={`CompanySelectParents ${selectedParentCategory? "csExpand" : ""}`}>
@@ -11,6 +13,9 @@ function CompanySelectParents({selectedParentCategory, setSelectedParentCategory
                 <p>Parent Companies</p>
             </div>
 
+            <CompanySelectCardContainer 
+                cardContainerArray={parentCompanyArray}
+            />
         </div>
     )
 }

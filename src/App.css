@@ -215,7 +215,7 @@
 .CompanySelectChildren{
   position: relative;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%;
   height: 30px;
   background-color: red;
@@ -249,6 +249,120 @@
   margin: 0;
   font-size: 18px;
   font-weight: 550;
+}
+
+.CompanySelectCardContainer{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(212, 212, 212);
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.CompanySelectCard{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 400px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: rgb(72, 129, 18);
+}
+
+.CompanySelectCardTitle{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  height: fit-content;
+  width: 100%;
+  background-color: rgba(245, 245, 245, 0.5);
+}
+
+.CompanySelectCardTitleText{
+  width: 250px;
+}
+
+.CompanySelectCardTitleText p{
+  display: flex;
+  align-items: center;
+  white-space: normal;
+  margin: 0 0 0 15px;
+  min-height: 50px;
+  font-weight: 550;
+  font-size: 18px;
+}
+
+.CompanySelectCardImage{
+  position: relative;
+  width: 50px;
+  height: 50px;
+}
+
+.CompanySelectCardImage img{
+  width: 50px;
+  height: 50px;
+}
+
+.CompanySelectSnapshot{
+  width: 100%;
+  height: 250px;
+  background-color: rosybrown;
+}
+
+.CompanySelectDetails{
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+  width: 100%;
+  background-color: royalblue;
+}
+
+.CompanySelectDetailsText{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  height: 100%;
+  width: 250px;
+}
+
+.CompanySelectDetailsText p{
+  margin: 1px 0 1px 10px;
+}
+
+.CompanySelectDetailsIcons{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 50px;
+  background-color: saddlebrown;
+}
+
+.CompanySelectDetailsIcons img{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50%;
+  width: 50px;
+}
+
+.CompanySelectDetailsIcons p{
+  display: flex;
+  height: 50%;
+  width: 50px;
+  background-color: gray;
+  color: white;
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0;
+  align-items: center;
+  justify-content: center;
 }
 
 .csExpand{

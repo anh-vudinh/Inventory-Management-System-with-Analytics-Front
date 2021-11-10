@@ -12,7 +12,6 @@ function App() {
 
   useEffect(() => {
     const headers = {
-      method: 'GET',
       withCredentials: true,
       credentials: 'include',
       redirect: 'follow',
@@ -20,14 +19,13 @@ function App() {
       headers: {
           'Content-Type': 'application/json'
       }
-  }
+    }
 
     fetch(`${BACK_END_URL}/api/auto_login`, headers)
     .then(resp => {
         if(resp.ok){
             resp.json().then(data => {
               if (data === null) return;
-              console.log(data)
               setCurrentUser(data.username)
               setIsLoggedIn(true)
             })
@@ -35,7 +33,6 @@ function App() {
     })
   },[])
   
-
   return (
     <div className="App">
       <Switch>
@@ -52,6 +49,7 @@ function App() {
           <CompanySelectContainer
             isLoggedIn={isLoggedIn}
             currentUser={currentUser}
+            BACK_END_URL={BACK_END_URL}
           />
         </Route>
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import CompanySelectCardContainer from './CompanySelectCardContainer'
 
 function CompanySelectChildren({selectedParentCategory, setSelectedParentCategory, MinusIcon, PlusIcon}){
 
@@ -9,7 +10,8 @@ function CompanySelectChildren({selectedParentCategory, setSelectedParentCategor
                 <img src={selectedParentCategory?  PlusIcon : MinusIcon} alt="-/+"/>
                 <p>Child Companies</p>
             </div>
-            
+
+            {/* <CompanySelectCardContainer/> */}
         </div>
     )
 }
