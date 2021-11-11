@@ -6,9 +6,8 @@ import CompanySelectParents from './CompanySelectParents'
 import MinusIcon from '../../assets/MinusIcon.png'
 import PlusIcon from '../../assets/PlusIcon.png'
 
-function CompanySelectContainer({currentUser, isLoggedIn, BACK_END_URL}){
+function CompanySelectContainer({selectedCompany, setSelectedCompany, currentUser, isLoggedIn, BACK_END_URL}){
 
-    const [selectedCompany, setSelectedCompany] = useState({name:""})
     const [selectedParentCategory, setSelectedParentCategory] = useState(true)
     const [parentCompanyArray, setParentCompanyArray] = useState([])
     const [childCompanyArray, setChildCompanyArray] = useState([])
@@ -31,6 +30,7 @@ function CompanySelectContainer({currentUser, isLoggedIn, BACK_END_URL}){
         .then(data => {
             setParentCompanyArray(data)
         })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     if(!isLoggedIn){
@@ -54,7 +54,7 @@ function CompanySelectContainer({currentUser, isLoggedIn, BACK_END_URL}){
             <CompanySelectChildren
                 MinusIcon={MinusIcon}
                 PlusIcon={PlusIcon}
-                selectedCompany={selectedCompany}
+                selectedCompany={selectedCompany} setSelectedCompany={setSelectedCompany}
                 selectedParentCategory={selectedParentCategory} setSelectedParentCategory={setSelectedParentCategory}
                 childCompanyArray={childCompanyArray} setChildCompanyArray={setChildCompanyArray}
             />

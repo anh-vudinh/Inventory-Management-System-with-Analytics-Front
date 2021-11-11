@@ -3,12 +3,14 @@ import React, { useEffect, useState } from 'react';
 import { Switch, Route } from "react-router-dom";
 import LoginContainer from './components/login_page/LoginContainer';
 import CompanySelectContainer from './components/company_select_page/CompanySelectContainer';
+import DetailPageContainer from './components/detail_page/DetailPageContainer';
 
 function App() {
 
   const BACK_END_URL = "https://localhost:9292"
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [currentUser, setCurrentUser] = useState("")
+  const [selectedCompany, setSelectedCompany] = useState({name:""})
 
   useEffect(() => {
     const headers = {
@@ -50,6 +52,13 @@ function App() {
             isLoggedIn={isLoggedIn}
             currentUser={currentUser}
             BACK_END_URL={BACK_END_URL}
+            selectedCompany={selectedCompany} setSelectedCompany={setSelectedCompany}
+          />
+        </Route>
+
+        <Route path="/detail_page/:id">
+          <DetailPageContainer
+            selectedCompany={selectedCompany}
           />
         </Route>
 

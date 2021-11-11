@@ -1,18 +1,20 @@
-import React from 'react'
+import React, {useState} from 'react'
+import { Redirect } from "react-router-dom";
 
 function CompanySelectCardActions({BACK_END_URL, company, setSelectedParentCategory, selectedCompany, setSelectedCompany, childCompanyArray, setChildCompanyArray}){
 
     const {id} = company
-
+    const [showDetailPage, setShowDetailPage] = useState(false)
     const actionsBtnsArray =  ["Go to", "See Children"]
     const actionsBtnImageArray = [
         "https://image.flaticon.com/icons/png/128/865/865496.png",
         "https://www.austintxgaragedoorsolutions.com/wp-content/uploads/2015/07/two-people-icon-01-01-150x150.png"
     ]
+    
 
     const actionsBtns = actionsBtnsArray.map((btn, index) => {
 
-        if(btn === "See Children" && company.children < 1) return;
+        if(btn === "See Children" && company.children < 1) return null;
 
         return (
             <div className="CompanySelectCardActionsBtn" key={btn} onClick={handleBtnClick}>
@@ -21,11 +23,16 @@ function CompanySelectCardActions({BACK_END_URL, company, setSelectedParentCateg
         )
     })
 
+    if(showDetailPage) {
+        return <Redirect to={`/detail_page/${id}`}/>
+    }
+
     function handleBtnClick(e){
         if(e.target.title === actionsBtnsArray[0]){
             //setCompanyDetails redirect to new page with full company details
             setSelectedCompany(company)
-            console.log(e.target.title)
+            setShowDetailPage(true)
+            
         } else {
             //fetch children of company and set
             fetchFromDB(`/api/get_children/${id}`)
