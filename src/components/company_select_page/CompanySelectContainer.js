@@ -8,7 +8,7 @@ import PlusIcon from '../../assets/PlusIcon.png'
 
 function CompanySelectContainer({currentUser, isLoggedIn, BACK_END_URL}){
 
-    const [selectedCompany, setSelectedCompany] = useState({})
+    const [selectedCompany, setSelectedCompany] = useState({name:""})
     const [selectedParentCategory, setSelectedParentCategory] = useState(true)
     const [parentCompanyArray, setParentCompanyArray] = useState([])
     const [childCompanyArray, setChildCompanyArray] = useState([])
@@ -43,6 +43,7 @@ function CompanySelectContainer({currentUser, isLoggedIn, BACK_END_URL}){
                 currentUser={currentUser}
             />
             <CompanySelectParents
+                BACK_END_URL={BACK_END_URL}
                 MinusIcon={MinusIcon}
                 PlusIcon={PlusIcon}
                 parentCompanyArray={parentCompanyArray}
@@ -53,7 +54,9 @@ function CompanySelectContainer({currentUser, isLoggedIn, BACK_END_URL}){
             <CompanySelectChildren
                 MinusIcon={MinusIcon}
                 PlusIcon={PlusIcon}
+                selectedCompany={selectedCompany}
                 selectedParentCategory={selectedParentCategory} setSelectedParentCategory={setSelectedParentCategory}
+                childCompanyArray={childCompanyArray} setChildCompanyArray={setChildCompanyArray}
             />
         </div>
     )

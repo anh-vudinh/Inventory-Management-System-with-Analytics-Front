@@ -1,7 +1,7 @@
 import React from 'react'
 import CompanySelectCardActions from './CompanySelectCardActions'
 
-function CompanySelectCard({company, selectedCompany, setSelectedCompany, childCompanyArray, setChildCompanyArray}){
+function CompanySelectCard({BACK_END_URL, setSelectedParentCategory, company, selectedCompany, setSelectedCompany, childCompanyArray, setChildCompanyArray}){
     const {name, image, location, description, is_parent, company_structure, company_type, company_model, employees, children} = company
     
     const genericLogo = "https://istvankocsis.gallerycdn.vsassets.io/extensions/istvankocsis/reactcodesnippets/3.1/1582843313592/Microsoft.VisualStudio.Services.Icons.Default"
@@ -83,6 +83,8 @@ function CompanySelectCard({company, selectedCompany, setSelectedCompany, childC
 
             <CompanySelectCardActions 
                 company={company}
+                BACK_END_URL={BACK_END_URL}
+                setSelectedParentCategory={setSelectedParentCategory}
                 selectedCompany={selectedCompany} setSelectedCompany={setSelectedCompany}
                 childCompanyArray={childCompanyArray} setChildCompanyArray={setChildCompanyArray}
             />

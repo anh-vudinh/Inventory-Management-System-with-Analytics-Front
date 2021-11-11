@@ -1,6 +1,8 @@
 import React from 'react'
 
-function CompanySelectCardActions({company, selectedCompany, setSelectedCompany, childCompanyArray, setChildCompanyArray}){
+function CompanySelectCardActions({BACK_END_URL, company, setSelectedParentCategory, selectedCompany, setSelectedCompany, childCompanyArray, setChildCompanyArray}){
+
+    const {id} = company
 
     const actionsBtnsArray =  ["Go to", "See Children"]
     const actionsBtnImageArray = [
@@ -8,11 +10,16 @@ function CompanySelectCardActions({company, selectedCompany, setSelectedCompany,
         "https://www.austintxgaragedoorsolutions.com/wp-content/uploads/2015/07/two-people-icon-01-01-150x150.png"
     ]
 
-    const actionsBtns = actionsBtnsArray.map((btn, index) =>
-        <div className="CompanySelectCardActionsBtn" key={btn} onClick={handleBtnClick}>
-            <img src={actionsBtnImageArray[index]} alt={btn} title={btn}/>
-        </div>    
-    )
+    const actionsBtns = actionsBtnsArray.map((btn, index) => {
+
+        if(btn === "See Children" && company.children < 1) return;
+
+        return (
+            <div className="CompanySelectCardActionsBtn" key={btn} onClick={handleBtnClick}>
+                <img src={actionsBtnImageArray[index]} alt={btn} title={btn}/>
+            </div>
+        )
+    })
 
     function handleBtnClick(e){
         if(e.target.title === actionsBtnsArray[0]){
@@ -21,12 +28,11 @@ function CompanySelectCardActions({company, selectedCompany, setSelectedCompany,
             console.log(e.target.title)
         } else {
             //fetch children of company and set
-            fetchNSetChildrenArray()
+            fetchFromDB(`/api/get_children/${id}`)
         }
-        
     }
 
-    function fetchNSetChildrenArray(){
+    function fetchFromDB(URL){
         const headers = {
             withCredentials: true,
             credentials: 'include',
@@ -37,11 +43,13 @@ function CompanySelectCardActions({company, selectedCompany, setSelectedCompany,
             }
         }
       
-        // fetch(`${BACK_END_URL}/api/companies`, headers)
-        // .then(resp => resp.json())
-        // .then(data => {
-        //     setParentCompanyArray(data)
-        // })
+        fetch(`${BACK_END_URL}${URL}`, headers)
+        .then(resp => resp.json())
+        .then(data => {
+            setChildCompanyArray(data)
+            setSelectedCompany(company)
+            setSelectedParentCategory(false)
+        })
     }
 
     return(

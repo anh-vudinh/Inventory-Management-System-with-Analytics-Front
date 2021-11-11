@@ -220,7 +220,7 @@
   height: 30px;
   background-color: red;
   overflow: hidden;
-  transition: height 800ms ease-in-out;
+  transition: height 600ms ease-in-out;
 }
 
 .CompanySelectParentsTitle,
@@ -251,6 +251,14 @@
   font-weight: 550;
 }
 
+.CompanySelectParentsTitle p:last-child,
+.CompanySelectChildrenTitle p:last-child{
+  margin: 0 0 0 6px;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: normal;
+}
+
 .CompanySelectCardsContainer{
   display: flex;
   flex-direction: row;
@@ -270,6 +278,7 @@
   flex-direction: row;
   width: 400px;
   height: 400px;
+  margin: 25px;
 }
 
 .CompanySelectCard{
@@ -285,11 +294,6 @@
   -moz-box-shadow: 0 0 3px #ccc;
   -webkit-box-shadow: 0 0 3px #ccc;
   box-shadow: 0 0 10px rgba(15, 15, 15, 0.8);
-  transition: transform 200ms linear;
-}
-
-.CompanySelectCard:hover{
-  transform: scale(1.01);
 }
 
 .CompanySelectCardTitle{
@@ -437,6 +441,7 @@
   width: 90px;
 }
 
+
 .CompanySelectCardActionsBtn{
   display: flex;
   justify-content: center;
@@ -451,6 +456,20 @@
   -moz-box-shadow: 0 0 3px #ccc;
   -webkit-box-shadow: 0 0 3px #ccc;
   box-shadow: 0 0 10px rgba(15, 15, 15, 0.8);
+  filter: brightness(1);
+  transition: filter 300ms ease-in, box-shadow 200ms ease-in;
+}
+
+.CompanySelectCardActionsBtn:hover{
+  filter: brightness(0.95);
+}
+
+.CompanySelectCardActionsBtn:active{
+  border: 1px solid transparent;
+  filter: brightness(0.95);
+  -moz-box-shadow: 0 0 3px #ccc;
+  -webkit-box-shadow: 0 0 3px #ccc;
+  box-shadow: 0 0 0px rgba(15, 15, 15, 0);
 }
 
 .CompanySelectCardActionsBtn img{
