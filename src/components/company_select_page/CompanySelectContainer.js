@@ -11,6 +11,7 @@ function CompanySelectContainer({selectedCompany, setSelectedCompany, currentUse
     const [selectedParentCategory, setSelectedParentCategory] = useState(true)
     const [parentCompanyArray, setParentCompanyArray] = useState([])
     const [childCompanyArray, setChildCompanyArray] = useState([])
+    const [selectedParentName, setSelectedParentName] = useState("")
     
     useEffect(()=>{
         if(!isLoggedIn) return;
@@ -46,6 +47,7 @@ function CompanySelectContainer({selectedCompany, setSelectedCompany, currentUse
                 BACK_END_URL={BACK_END_URL}
                 MinusIcon={MinusIcon}
                 PlusIcon={PlusIcon}
+                setSelectedParentName={setSelectedParentName}
                 parentCompanyArray={parentCompanyArray}
                 selectedParentCategory={selectedParentCategory} setSelectedParentCategory={setSelectedParentCategory}
                 selectedCompany={selectedCompany} setSelectedCompany={setSelectedCompany}
@@ -54,6 +56,7 @@ function CompanySelectContainer({selectedCompany, setSelectedCompany, currentUse
             <CompanySelectChildren
                 MinusIcon={MinusIcon}
                 PlusIcon={PlusIcon}
+                selectedParentName={selectedParentName} setSelectedParentName={setSelectedParentName}
                 selectedCompany={selectedCompany} setSelectedCompany={setSelectedCompany}
                 selectedParentCategory={selectedParentCategory} setSelectedParentCategory={setSelectedParentCategory}
                 childCompanyArray={childCompanyArray} setChildCompanyArray={setChildCompanyArray}

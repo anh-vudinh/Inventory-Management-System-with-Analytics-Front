@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { Redirect } from "react-router-dom";
 
-function CompanySelectCardActions({BACK_END_URL, company, setSelectedParentCategory, selectedCompany, setSelectedCompany, childCompanyArray, setChildCompanyArray}){
+function CompanySelectCardActions({setSelectedParentName, BACK_END_URL, company, setSelectedParentCategory, selectedCompany, setSelectedCompany, childCompanyArray, setChildCompanyArray}){
 
     const {id} = company
     const [showDetailPage, setShowDetailPage] = useState(false)
@@ -55,6 +55,7 @@ function CompanySelectCardActions({BACK_END_URL, company, setSelectedParentCateg
         .then(data => {
             setChildCompanyArray(data)
             setSelectedCompany(company)
+            setSelectedParentName(company.name)
             setSelectedParentCategory(false)
         })
     }

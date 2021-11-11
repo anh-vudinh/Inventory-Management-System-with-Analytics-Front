@@ -1,15 +1,16 @@
-import React from 'react'
+import React, {useState} from 'react'
 import CompanySelectCardContainer from './CompanySelectCardContainer'
 
-function CompanySelectChildren({selectedCompany, setSelectedCompany, childCompanyArray, setChildCompanyArray, selectedParentCategory, setSelectedParentCategory, MinusIcon, PlusIcon}){
+function CompanySelectChildren({selectedParentName, setSelectedParentName, selectedCompany, setSelectedCompany, childCompanyArray, setChildCompanyArray, selectedParentCategory, setSelectedParentCategory, MinusIcon, PlusIcon}){
 
+    
     return(
         <div className={`CompanySelectChildren ${selectedParentCategory? "" : "csExpand"}`}>
 
             <div className="CompanySelectChildrenTitle" onClick={()=>setSelectedParentCategory(selectedParentCategory => !selectedParentCategory)}>
                 <img src={selectedParentCategory?  PlusIcon : MinusIcon} alt="-/+"/>
                 <p>Child Companies</p>
-                <p>{selectedCompany.name === "" || !selectedCompany.is_parent? "": `(${selectedCompany.name})`}</p>
+                <p>{selectedParentName === ""? "": `(${selectedParentName})`}</p>
             </div>
 
             <CompanySelectCardContainer
@@ -17,6 +18,7 @@ function CompanySelectChildren({selectedCompany, setSelectedCompany, childCompan
                 setChildCompanyArray={setChildCompanyArray}
                 setSelectedParentCategory={setSelectedParentCategory}
                 setSelectedCompany={setSelectedCompany}
+                setSelectedParentName={setSelectedParentName}
             />
         </div>
     )

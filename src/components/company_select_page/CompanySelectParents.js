@@ -2,7 +2,7 @@ import React from 'react'
 import CompanySelectCardContainer from './CompanySelectCardContainer'
 
 
-function CompanySelectParents({BACK_END_URL, childCompanyArray, setChildCompanyArray, selectedCompany, setSelectedCompany, parentCompanyArray, selectedParentCategory, setSelectedParentCategory, MinusIcon, PlusIcon}){
+function CompanySelectParents({setSelectedParentName, BACK_END_URL, childCompanyArray, setChildCompanyArray, selectedCompany, setSelectedCompany, parentCompanyArray, selectedParentCategory, setSelectedParentCategory, MinusIcon, PlusIcon}){
 
 
     return(
@@ -17,6 +17,7 @@ function CompanySelectParents({BACK_END_URL, childCompanyArray, setChildCompanyA
             <CompanySelectCardContainer
                 BACK_END_URL={BACK_END_URL} 
                 cardContainerArray={parentCompanyArray}
+                setSelectedParentName={setSelectedParentName}
                 setSelectedParentCategory={setSelectedParentCategory}
                 selectedCompany={selectedCompany} setSelectedCompany={setSelectedCompany}
                 childCompanyArray={childCompanyArray} setChildCompanyArray={setChildCompanyArray}
