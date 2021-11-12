@@ -8,6 +8,7 @@ import PlusIcon from '../../assets/PlusIcon.png'
 
 function CompanySelectContainer({selectedCompany, setSelectedCompany, currentUser, isLoggedIn, BACK_END_URL}){
 
+    const bgImage = "https://www.elomatic.com/en/assets/images/services/information-management/information-management.jpg"
     const [selectedParentCategory, setSelectedParentCategory] = useState(true)
     const [parentCompanyArray, setParentCompanyArray] = useState([])
     const [childCompanyArray, setChildCompanyArray] = useState([])
@@ -40,9 +41,11 @@ function CompanySelectContainer({selectedCompany, setSelectedCompany, currentUse
 
     return(
         <div className="CompanySelectContainer">
+            <img className="CompanySelectContainerBGImage" src={bgImage} alt="background"/>
             <CompanySelectHeader
                 currentUser={currentUser}
             />
+
             <CompanySelectParents
                 BACK_END_URL={BACK_END_URL}
                 MinusIcon={MinusIcon}
@@ -53,6 +56,7 @@ function CompanySelectContainer({selectedCompany, setSelectedCompany, currentUse
                 selectedCompany={selectedCompany} setSelectedCompany={setSelectedCompany}
                 childCompanyArray={childCompanyArray} setChildCompanyArray={setChildCompanyArray}
             />
+
             <CompanySelectChildren
                 MinusIcon={MinusIcon}
                 PlusIcon={PlusIcon}
