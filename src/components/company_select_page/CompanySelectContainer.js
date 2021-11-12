@@ -6,9 +6,10 @@ import CompanySelectParents from './CompanySelectParents'
 import MinusIcon from '../../assets/MinusIcon.png'
 import PlusIcon from '../../assets/PlusIcon.png'
 
-function CompanySelectContainer({selectedCompany, setSelectedCompany, currentUser, isLoggedIn, BACK_END_URL}){
+function CompanySelectContainer({logoutSession, selectedCompany, setSelectedCompany, currentUser, isLoggedIn, BACK_END_URL}){
 
     const bgImage = "https://www.elomatic.com/en/assets/images/services/information-management/information-management.jpg"
+    const logoutIcon = "https://www.pinclipart.com/picdir/big/126-1262666_open-exit-door-open-door-icon-png-clipart.png"
     const [selectedParentCategory, setSelectedParentCategory] = useState(true)
     const [parentCompanyArray, setParentCompanyArray] = useState([])
     const [childCompanyArray, setChildCompanyArray] = useState([])
@@ -41,7 +42,8 @@ function CompanySelectContainer({selectedCompany, setSelectedCompany, currentUse
 
     return(
         <div className="CompanySelectContainer">
-            <img className="CompanySelectContainerBGImage" src={bgImage} alt="background"/>
+           <img className="CompanySelectContainerBGImage" src={bgImage} alt="background"/>
+
             <CompanySelectHeader
                 currentUser={currentUser}
             />
@@ -65,6 +67,10 @@ function CompanySelectContainer({selectedCompany, setSelectedCompany, currentUse
                 selectedParentCategory={selectedParentCategory} setSelectedParentCategory={setSelectedParentCategory}
                 childCompanyArray={childCompanyArray} setChildCompanyArray={setChildCompanyArray}
             />
+
+            <div className="CompanySelectLogout" onClick={logoutSession}>
+                <img src={logoutIcon} alt="logout" title="Logout"/>
+            </div>
         </div>
     )
 }

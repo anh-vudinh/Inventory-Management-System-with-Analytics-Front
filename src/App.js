@@ -34,6 +34,23 @@ function App() {
         }
     })
   },[])
+
+  function logoutSession(){
+
+    const headers = {
+      method: 'DELETE',
+      withCredentials: true,
+      credentials: 'include',
+      mode: "cors"
+  }
+
+    fetch(`${BACK_END_URL}/api/logout`, headers)
+    .then(()=> {
+      console.log("signout")
+      setIsLoggedIn(false)
+      setCurrentUser("")
+    })
+  }
   
   return (
     <div className="App">
@@ -49,6 +66,7 @@ function App() {
 
         <Route path="/company_select">
           <CompanySelectContainer
+            logoutSession={logoutSession}
             isLoggedIn={isLoggedIn}
             currentUser={currentUser}
             BACK_END_URL={BACK_END_URL}
