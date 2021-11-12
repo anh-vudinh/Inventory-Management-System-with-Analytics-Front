@@ -10,10 +10,12 @@ function CompanySelectContainer({logoutSession, selectedCompany, setSelectedComp
 
     const bgImage = "https://www.elomatic.com/en/assets/images/services/information-management/information-management.jpg"
     const logoutIcon = "https://www.pinclipart.com/picdir/big/126-1262666_open-exit-door-open-door-icon-png-clipart.png"
+    const addIcon = "http://www.clker.com/cliparts/E/D/d/g/1/1/white-plus-md.png"
     const [selectedParentCategory, setSelectedParentCategory] = useState(true)
     const [parentCompanyArray, setParentCompanyArray] = useState([])
     const [childCompanyArray, setChildCompanyArray] = useState([])
     const [selectedParentName, setSelectedParentName] = useState("")
+    const [createCompany, setCreateCompany] = useState(false)
     
     useEffect(()=>{
         if(!isLoggedIn) return;
@@ -38,6 +40,10 @@ function CompanySelectContainer({logoutSession, selectedCompany, setSelectedComp
 
     if(!isLoggedIn){
         return <Redirect to="/"/>
+    }
+
+    if(createCompany){
+        return <Redirect to="/create_company"/>
     }
 
     return(
@@ -70,6 +76,10 @@ function CompanySelectContainer({logoutSession, selectedCompany, setSelectedComp
 
             <div className="CompanySelectLogout" onClick={logoutSession}>
                 <img src={logoutIcon} alt="logout" title="Logout"/>
+            </div>
+
+            <div className="CompanySelectCreateCompany" onClick={()=> setCreateCompany(true)}>
+                <img src={addIcon} alt="create company" title="Create Company"/>
             </div>
         </div>
     )

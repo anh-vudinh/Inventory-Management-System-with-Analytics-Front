@@ -36,7 +36,6 @@ function App() {
   },[])
 
   function logoutSession(){
-
     const headers = {
       method: 'DELETE',
       withCredentials: true,
@@ -80,8 +79,11 @@ function App() {
           />
         </Route>
 
-      </Switch>
+        <Route path="/create_company">
+          
+        </Route>
 
+      </Switch>
     </div>
   );
 }

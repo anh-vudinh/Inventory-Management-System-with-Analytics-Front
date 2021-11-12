@@ -221,6 +221,27 @@
   transform: translateX(-5px);
 }
 
+.CompanySelectCreateCompany{
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 50px;
+  bottom: 50px;
+  height: 65px;
+  width: 65px;
+  border: 2px;
+  border-style: dashed;
+  border-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.CompanySelectCreateCompany img{
+  height: 35px;
+  width: 35px;
+}
+
 
 .CompanySelectContainerBGImage{
   position: absolute;
