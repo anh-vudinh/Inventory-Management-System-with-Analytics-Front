@@ -4,6 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import LoginContainer from './components/login_page/LoginContainer';
 import CompanySelectContainer from './components/company_select_page/CompanySelectContainer';
 import DetailPageContainer from './components/detail_page/DetailPageContainer';
+import CreateCompanyContainer from './components/create_company_page/CreateCompanyContainer';
 
 function App() {
 
@@ -80,7 +81,7 @@ function App() {
         </Route>
 
         <Route path="/create_company">
-          
+          <CreateCompanyContainer/>
         </Route>
 
       </Switch>
