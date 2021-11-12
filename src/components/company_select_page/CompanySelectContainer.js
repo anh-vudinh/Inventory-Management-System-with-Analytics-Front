@@ -30,7 +30,7 @@ function CompanySelectContainer({logoutSession, selectedCompany, setSelectedComp
             }
         }
       
-        fetch(`${BACK_END_URL}/api/companies`, headers)
+        fetch(`${BACK_END_URL}/api/get_parents`, headers)
         .then(resp => resp.json())
         .then(data => {
             setParentCompanyArray(data)

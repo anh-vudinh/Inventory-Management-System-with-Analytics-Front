@@ -81,7 +81,9 @@ function App() {
         </Route>
 
         <Route path="/create_company">
-          <CreateCompanyContainer/>
+          <CreateCompanyContainer
+            BACK_END_URL={BACK_END_URL}
+          />
         </Route>
 
       </Switch>

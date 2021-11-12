@@ -1,7 +1,7 @@
 import React from "react";
 import CreateCompanyForm from "./CreateCompanyForm";
 
-function CreateCompanyContainer(){
+function CreateCompanyContainer({BACK_END_URL}){
 
     const containerBG = "https://www.tomber.biz/wp-content/uploads/2016/01/b53e19288eb68b246d95aa21ac5d5e93.jpg"
 
@@ -10,7 +10,9 @@ function CreateCompanyContainer(){
             <div className="CreateCompanyContainerBG">
                 <img src={containerBG} alt="background"/>
             </div>
-            <CreateCompanyForm/>
+            <CreateCompanyForm
+                BACK_END_URL={BACK_END_URL}
+            />
         </div>
     )
 }
