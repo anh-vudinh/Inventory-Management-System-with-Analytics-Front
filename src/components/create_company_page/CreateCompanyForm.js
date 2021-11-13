@@ -15,6 +15,7 @@ function CreateCompanyForm({BACK_END_URL}){
         zipcode: "",
         established: "",
         is_parent: true,
+        parent_name: "",
         company_structure: "",
         company_type: "",
         company_model: ""
