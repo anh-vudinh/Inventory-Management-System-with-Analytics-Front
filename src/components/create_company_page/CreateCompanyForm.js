@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import CreateCompanyDescription from "./CreateCompanyDescription";
 import CreateCompanyDetails from "./CreateCompanyDetails";
 import CreateCompanyLogo from "./CreateCompanyLogo";
@@ -30,6 +30,33 @@ function CreateCompanyForm({BACK_END_URL}){
         setFormData({...formData, [e.target.name]: e.target.value})
     }
 
+    function handleFormSubmit(){
+        const headers = {
+            method: 'POST',
+            withCredentials: true,
+            credentials: 'include',
+            redirect: 'follow',
+            mode: "cors",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData),
+        }
+
+        fetch(`${BACK_END_URL}/api/companies`, headers)
+        .then(resp => {
+            if(resp.ok){
+                resp.json().then(data => {
+
+                })
+            }else{
+                resp.json().then(message => {
+
+                })
+            }
+        })
+    }
+
     return(
         <div className="CreateCompanyFormContainer">
 
@@ -56,7 +83,8 @@ function CreateCompanyForm({BACK_END_URL}){
                     <CreateCompanyDetails
                         handleInputChange={handleInputChange}
                         formData={formData} setFormData={setFormData}
-                        BACK_END_URL={BACK_END_URL}                  
+                        BACK_END_URL={BACK_END_URL}
+                        handleFormSubmit={handleFormSubmit}      
                     />
                 </div>
 

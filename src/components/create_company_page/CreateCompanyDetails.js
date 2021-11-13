@@ -1,6 +1,7 @@
 import React,{useEffect, useState} from "react";
+import CreateCompanyParentPanel from "./CreateCompanyParentPanel";
 
-function CreateCompanyDetails({formData, setFormData, handleInputChange, BACK_END_URL}){
+function CreateCompanyDetails({formData, setFormData, handleInputChange, handleFormSubmit, BACK_END_URL}){
 
     const {name, street, city, state, zipcode, established, is_parent, company_structure, company_type, company_model, parent_name} = formData
 
@@ -68,6 +69,7 @@ function CreateCompanyDetails({formData, setFormData, handleInputChange, BACK_EN
         handleInputChange(e)
     }
 
+
     return(
         <div className="CreateCompanyDetails">
             <form>
@@ -75,7 +77,7 @@ function CreateCompanyDetails({formData, setFormData, handleInputChange, BACK_EN
                     <h1>Required Information</h1>
 
                     <div className="CreateCompanyName">
-                        <p>Company Name</p>
+                        <p>Name</p>
                         <div>
                             <input placeholder="Name" name="name" value={name} onChange={handleInputChange}/>
                             <p>must be unique(case sensitive)</p>
@@ -85,21 +87,21 @@ function CreateCompanyDetails({formData, setFormData, handleInputChange, BACK_EN
                     <div className="CreateCompanySubSecA">
                         <div className="CreateCompanySpecs">
                             <div className="CreateCompanyStructure">
-                                <p>Company Structure</p>
+                                <p>Structure</p>
                                 <select name="company_structure" value={company_structure} onChange={handleInputChange}>
                                     {companyStructures}    
                                 </select>
                             </div>
 
                             <div className="CreateCompanyType">
-                                <p>Company Type</p>
+                                <p>Type</p>
                                 <select name="company_type" value={company_type} onChange={handleInputChange}>
                                     {companyTypes}    
                                 </select>
                             </div>
 
                             <div className="CreateCompanyModel">
-                                <p>Company Industry</p>
+                                <p>Industry</p>
                                 <select name="company_model" value={company_model} onChange={handleInputChange}>
                                     {companyModels}
                                 </select>
@@ -107,55 +109,19 @@ function CreateCompanyDetails({formData, setFormData, handleInputChange, BACK_EN
                         </div>
 
                         <div className="CreateCompanyParent">
-                            <input type="checkbox" name="is_parent" checked={is_parent} onChange={handleInputChange}/>
-                            <p>{is_parent? "(Check) Parent Company" : "Child of: "}</p>
-                            <select className={`CreateCompanyParentSelect ${is_parent? "hidden" : ""}`} name="parent_name" value={parent_name} onChange={handleSelectParent}>
-                                {parentCompanies}    
-                            </select>
-                            <div className="CreateCompanyParentCompanyDetails">
-                                <div>
-                                    <p>Location: </p>
-                                    <p>{selectedParent.location}</p>
-                                </div>
-                                
-                                <div>
-                                    <div className="CreateCompanyParentCompanyDetailsSecA">
-                                        <div>
-                                            <p>Structure: </p>
-                                            <p>{selectedParent.company_structure}</p>
-                                        </div>
-                                        <div>
-                                            <p>Type: </p>
-                                            <p>{selectedParent.company_type}</p>
-                                        </div>
-                                        <div>
-                                            <p>Industry: </p>
-                                            <p>{selectedParent.company_model}</p>
-                                        </div>
-                                    </div>
-
-                                    <div className="CreateCompanyParentCompanyDetailsSecB">
-                                        <div>
-                                            <p>Employees: </p>
-                                            <p>{selectedParent.employees}</p>
-                                        </div>
-                                        <div>
-                                            <p>Children: </p>
-                                            <p>{selectedParent.children}</p>
-                                        </div>
-                                        <div>
-                                            <p>Parent?: </p>
-                                            <p>{selectedParent.is_parent.toString()}</p>
-                                        </div>
-                                    </div>
-                                </div>
-
+                            <div className="CreateCompanyParentSelectSec">
+                                <input type="checkbox" name="is_parent" checked={is_parent} onChange={handleInputChange}/>
+                                <p>{is_parent? "(Check) Parent Company" : "Child of: "}</p>
+                                <select className={`CreateCompanyParentSelect ${is_parent? "hidden" : ""}`} name="parent_name" value={parent_name} onChange={handleSelectParent}>
+                                    {parentCompanies}    
+                                </select>
                             </div>
+                            <CreateCompanyParentPanel
+                                selectedParent={selectedParent}
+                                is_parent={is_parent}
+                            />
                         </div>
                     </div>
-                    
-
-
                 </div>
 
                 <div className="Divider"></div>
@@ -179,15 +145,10 @@ function CreateCompanyDetails({formData, setFormData, handleInputChange, BACK_EN
                         </div>
                     </div>
                 </div>
-
-
-
-
-
-
-
-
             </form>
+            <div className="CreateCompanyFormSubmit" onClick={handleFormSubmit}>
+                <img src="https://cdn.onlinewebfonts.com/svg/img_489531.png" alt="save" title="Save"/>
+            </div>
         </div>
     )
 }
