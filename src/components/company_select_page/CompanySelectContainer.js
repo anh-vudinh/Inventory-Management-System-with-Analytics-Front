@@ -6,7 +6,7 @@ import CompanySelectParents from './CompanySelectParents'
 import MinusIcon from '../../assets/MinusIcon.png'
 import PlusIcon from '../../assets/PlusIcon.png'
 
-function CompanySelectContainer({logoutSession, selectedCompany, setSelectedCompany, currentUser, isLoggedIn, BACK_END_URL}){
+function CompanySelectContainer({history, setIsLoading, logoutSession, selectedCompany, setSelectedCompany, currentUser, isLoggedIn, BACK_END_URL}){
 
     const bgImage = "https://www.elomatic.com/en/assets/images/services/information-management/information-management.jpg"
     const logoutIcon = "https://www.pinclipart.com/picdir/big/126-1262666_open-exit-door-open-door-icon-png-clipart.png"
@@ -15,10 +15,11 @@ function CompanySelectContainer({logoutSession, selectedCompany, setSelectedComp
     const [parentCompanyArray, setParentCompanyArray] = useState([])
     const [childCompanyArray, setChildCompanyArray] = useState([])
     const [selectedParentName, setSelectedParentName] = useState("")
-    const [createCompany, setCreateCompany] = useState(false)
     
+
     useEffect(()=>{
         if(!isLoggedIn) return;
+        setIsLoading(true)
         //fetch user.companies
         const headers = {
             withCredentials: true,
@@ -34,6 +35,7 @@ function CompanySelectContainer({logoutSession, selectedCompany, setSelectedComp
         .then(resp => resp.json())
         .then(data => {
             setParentCompanyArray(data)
+            setIsLoading(false)
         })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
@@ -42,8 +44,8 @@ function CompanySelectContainer({logoutSession, selectedCompany, setSelectedComp
         return <Redirect to="/"/>
     }
 
-    if(createCompany){
-        return <Redirect to="/create_company"/>
+    function handleClickCreateCompany(){
+        history.push("/create_company")
     }
 
     return(
@@ -55,6 +57,7 @@ function CompanySelectContainer({logoutSession, selectedCompany, setSelectedComp
             />
 
             <CompanySelectParents
+                history={history}
                 BACK_END_URL={BACK_END_URL}
                 MinusIcon={MinusIcon}
                 PlusIcon={PlusIcon}
@@ -66,6 +69,7 @@ function CompanySelectContainer({logoutSession, selectedCompany, setSelectedComp
             />
 
             <CompanySelectChildren
+                history={history}
                 MinusIcon={MinusIcon}
                 PlusIcon={PlusIcon}
                 selectedParentName={selectedParentName} setSelectedParentName={setSelectedParentName}
@@ -78,7 +82,7 @@ function CompanySelectContainer({logoutSession, selectedCompany, setSelectedComp
                 <img src={logoutIcon} alt="logout" title="Logout"/>
             </div>
 
-            <div className="CompanySelectCreateCompany" onClick={()=> setCreateCompany(true)}>
+            <div className="CompanySelectCreateCompany" onClick={handleClickCreateCompany}>
                 <img src={addIcon} alt="create company" title="Create Company"/>
             </div>
         </div>

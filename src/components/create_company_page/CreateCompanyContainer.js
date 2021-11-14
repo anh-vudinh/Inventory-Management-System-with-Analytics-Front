@@ -4,7 +4,7 @@ import CreateCompanyError from "./CreateCompanyError";
 import CreateCompanyForm from "./CreateCompanyForm";
 import CreateCompanySuccess from "./CreateCompanySuccess"
 
-function CreateCompanyContainer({BACK_END_URL, logoutSession, isLoggedIn}){
+function CreateCompanyContainer({history, setIsLoading, BACK_END_URL, logoutSession, isLoggedIn}){
 
     const containerBG = "https://www.tomber.biz/wp-content/uploads/2016/01/b53e19288eb68b246d95aa21ac5d5e93.jpg"
     const [errorMessage, setErrorMessage] = useState("")
@@ -13,6 +13,10 @@ function CreateCompanyContainer({BACK_END_URL, logoutSession, isLoggedIn}){
 
     if(!isLoggedIn){
         return <Redirect to="/"/>
+    }
+
+    function handleGoBackClick(){
+        history.goBack()
     }
 
     return(
@@ -24,6 +28,7 @@ function CreateCompanyContainer({BACK_END_URL, logoutSession, isLoggedIn}){
                 BACK_END_URL={BACK_END_URL}
                 setErrorMessage={setErrorMessage}
                 setCreatedCompany={setCreatedCompany}
+                setIsLoading={setIsLoading}
             />
             <CreateCompanyError
                 errorMessage={errorMessage} setErrorMessage={setErrorMessage}
@@ -31,6 +36,10 @@ function CreateCompanyContainer({BACK_END_URL, logoutSession, isLoggedIn}){
             <CreateCompanySuccess
                 createdCompany={createdCompany} setCreatedCompany={setCreatedCompany}
             />
+
+            <div className="CreateCompanyBack" onClick={handleGoBackClick}>
+                <img src="https://cdn2.iconfinder.com/data/icons/50-material-design-round-corner-style/44/Replay_Reverse-512.png" alt="back button" title="Go Back"/>
+            </div>
 
             <div className="CompanySelectLogout" onClick={logoutSession}>
                 <img src={logoutIcon} alt="logout" title="Logout"/>

@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import CompanySelectCardContainer from './CompanySelectCardContainer'
 
-function CompanySelectChildren({selectedParentName, setSelectedParentName, selectedCompany, setSelectedCompany, childCompanyArray, setChildCompanyArray, selectedParentCategory, setSelectedParentCategory, MinusIcon, PlusIcon}){
+function CompanySelectChildren({history, selectedParentName, setSelectedParentName, selectedCompany, setSelectedCompany, childCompanyArray, setChildCompanyArray, selectedParentCategory, setSelectedParentCategory, MinusIcon, PlusIcon}){
 
     
     return(
@@ -14,6 +14,7 @@ function CompanySelectChildren({selectedParentName, setSelectedParentName, selec
             </div>
 
             <CompanySelectCardContainer
+                history={history}
                 cardContainerArray={childCompanyArray}          //cardContainerArray converts childCompanyArray to general variable before passing to CardContainer
                 setChildCompanyArray={setChildCompanyArray}
                 setSelectedParentCategory={setSelectedParentCategory}

@@ -3,7 +3,7 @@ import CreateCompanyDescription from "./CreateCompanyDescription";
 import CreateCompanyDetails from "./CreateCompanyDetails";
 import CreateCompanyLogo from "./CreateCompanyLogo";
 
-function CreateCompanyForm({BACK_END_URL, setErrorMessage, setCreatedCompany}){
+function CreateCompanyForm({setIsLoading, BACK_END_URL, setErrorMessage, setCreatedCompany}){
 
     const formDataDefault = {
         logo: "",
@@ -82,6 +82,7 @@ function CreateCompanyForm({BACK_END_URL, setErrorMessage, setCreatedCompany}){
 
                 <div className="CreateCompanyFormRight">
                     <CreateCompanyDetails
+                        setIsLoading={setIsLoading}
                         handleInputChange={handleInputChange}
                         formData={formData} setFormData={setFormData}
                         BACK_END_URL={BACK_END_URL}

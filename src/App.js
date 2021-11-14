@@ -1,17 +1,21 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
-import { Switch, Route} from "react-router-dom";
+import { Switch, Route, useHistory} from "react-router-dom";
 import LoginContainer from './components/login_page/LoginContainer';
 import CompanySelectContainer from './components/company_select_page/CompanySelectContainer';
 import DetailPageContainer from './components/detail_page/DetailPageContainer';
 import CreateCompanyContainer from './components/create_company_page/CreateCompanyContainer';
+import LoadingPage from './components/LoadingPage';
 
 function App() {
 
   const BACK_END_URL = "https://localhost:9292"
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const [currentUser, setCurrentUser] = useState("")
   const [selectedCompany, setSelectedCompany] = useState({name:""})
+  const history = useHistory();
+
 
   useEffect(() => {
     const headers = {
@@ -61,34 +65,44 @@ function App() {
             isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}
             currentUser={currentUser} setCurrentUser={setCurrentUser}
             BACK_END_URL={BACK_END_URL}
+            history={history}
           />
         </Route>
 
         <Route path="/company_select">
           <CompanySelectContainer
             logoutSession={logoutSession}
+            setIsLoading={setIsLoading}
             isLoggedIn={isLoggedIn}
             currentUser={currentUser}
             BACK_END_URL={BACK_END_URL}
             selectedCompany={selectedCompany} setSelectedCompany={setSelectedCompany}
+            history={history}
           />
         </Route>
 
         <Route path="/detail_page/:id">
           <DetailPageContainer
             selectedCompany={selectedCompany}
+            history={history}
           />
         </Route>
 
         <Route path="/create_company">
           <CreateCompanyContainer
             BACK_END_URL={BACK_END_URL}
+            setIsLoading={setIsLoading}
             logoutSession={logoutSession}
             isLoggedIn={isLoggedIn}
+            history={history}
           />
         </Route>
 
       </Switch>
+
+      <LoadingPage
+        isLoading={isLoading}
+      />
     </div>
   );
 }

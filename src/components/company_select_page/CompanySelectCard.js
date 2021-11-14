@@ -1,7 +1,7 @@
 import React from 'react'
 import CompanySelectCardActions from './CompanySelectCardActions'
 
-function CompanySelectCard({setSelectedParentName, BACK_END_URL, setSelectedParentCategory, company, selectedCompany, setSelectedCompany, childCompanyArray, setChildCompanyArray}){
+function CompanySelectCard({history, setSelectedParentName, BACK_END_URL, setSelectedParentCategory, company, selectedCompany, setSelectedCompany, childCompanyArray, setChildCompanyArray}){
     const {name, logo, location, description, is_parent, structure, organization, industry, employees, children} = company
 
     const genericLogo = "https://istvankocsis.gallerycdn.vsassets.io/extensions/istvankocsis/reactcodesnippets/3.1/1582843313592/Microsoft.VisualStudio.Services.Icons.Default"
@@ -24,7 +24,7 @@ function CompanySelectCard({setSelectedParentName, BACK_END_URL, setSelectedPare
     const companyDetailsValueArrayA = [industry, location]
 
     const companyDetailsA = companyDetailsNameArrayA.map((detail, index) => 
-        <div className="CompanySelectDetailsSubText" key={detail}>
+        <div className="CompanySelectDetailsSubText" key={`${detail}${index}`}>
             <p>{`${detail} :`}</p>
             <p>{companyDetailsValueArrayA[index]}</p>
         </div>
@@ -34,7 +34,7 @@ function CompanySelectCard({setSelectedParentName, BACK_END_URL, setSelectedPare
     const companyDetailsValueArrayB = [employees, children]
 
     const companyDetailsB = companyDetailsNameArrayB.map((detail, index) => 
-        <div className="CompanySelectDetailsSubText" key={detail}>
+        <div className="CompanySelectDetailsSubText" key={`${detail}${index}`}>
             <p>{`${detail} :`}</p>
             <p>{companyDetailsValueArrayB[index]}</p>
         </div>
@@ -83,7 +83,8 @@ function CompanySelectCard({setSelectedParentName, BACK_END_URL, setSelectedPare
                 </div>
             </div>
 
-            <CompanySelectCardActions 
+            <CompanySelectCardActions
+                history={history}
                 company={company}
                 BACK_END_URL={BACK_END_URL}
                 setSelectedParentCategory={setSelectedParentCategory}

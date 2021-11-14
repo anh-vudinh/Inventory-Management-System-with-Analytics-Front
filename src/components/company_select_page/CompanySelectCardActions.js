@@ -1,10 +1,9 @@
 import React, {useState} from 'react'
 import { Redirect } from "react-router-dom";
 
-function CompanySelectCardActions({setSelectedParentName, BACK_END_URL, company, setSelectedParentCategory, selectedCompany, setSelectedCompany, childCompanyArray, setChildCompanyArray}){
+function CompanySelectCardActions({history, setSelectedParentName, BACK_END_URL, company, setSelectedParentCategory, selectedCompany, setSelectedCompany, childCompanyArray, setChildCompanyArray}){
 
     const {id} = company
-    const [showDetailPage, setShowDetailPage] = useState(false)
     const actionsBtnsArray =  ["Go to", "See Children"]
     const actionsBtnImageArray = [
         "https://image.flaticon.com/icons/png/128/865/865496.png",
@@ -23,15 +22,12 @@ function CompanySelectCardActions({setSelectedParentName, BACK_END_URL, company,
         )
     })
 
-    if(showDetailPage) {
-        return <Redirect to={`/detail_page/${id}`}/>
-    }
 
     function handleBtnClick(e){
         if(e.target.title === actionsBtnsArray[0]){
             //setCompanyDetails redirect to new page with full company details
             setSelectedCompany(company)
-            setShowDetailPage(true)
+            history.push(`/detail_page/${id}`)
             
         } else {
             //fetch children of company and set

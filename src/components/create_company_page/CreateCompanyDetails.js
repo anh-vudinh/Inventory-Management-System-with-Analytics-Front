@@ -1,7 +1,7 @@
 import React,{useEffect, useState} from "react";
 import CreateCompanyParentPanel from "./CreateCompanyParentPanel";
 
-function CreateCompanyDetails({formData, setFormData, handleInputChange, handleFormSubmit, BACK_END_URL}){
+function CreateCompanyDetails({setIsLoading, formData, setFormData, handleInputChange, handleFormSubmit, BACK_END_URL}){
 
     const {name, street, city, state, zipcode, established, is_parent, structure, organization, industry, parent_name} = formData
 
@@ -22,6 +22,7 @@ function CreateCompanyDetails({formData, setFormData, handleInputChange, handleF
     
 
     useEffect(()=>{
+        setIsLoading(true)
         const headers = {
             withCredentials: true,
             credentials: 'include',
@@ -36,6 +37,7 @@ function CreateCompanyDetails({formData, setFormData, handleInputChange, handleF
         .then(resp => resp.json())
         .then(data => {
             setUserCompaniesArray(data)
+            setIsLoading(false)
         })
     },[])
 

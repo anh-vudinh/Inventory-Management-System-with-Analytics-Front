@@ -6,6 +6,23 @@
   background-color: whitesmoke;
 }
 
+.LoadingPage{
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: inherit;   
+  visibility: visible;
+  opacity: 1;
+}
+
+.LoadingPage img{
+  width: 50%;
+}
+
 .LoginContainer{
   position: relative;
   display: flex;
@@ -194,6 +211,23 @@
   flex-direction: column;
   flex-wrap: nowrap;
   background-color: white;
+}
+
+.CreateCompanyBack{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+}
+
+.CreateCompanyBack img{
+  width: 70px;
+  height: 70px;
 }
 
 .CompanySelectLogout{
