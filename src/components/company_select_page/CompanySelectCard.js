@@ -2,24 +2,26 @@ import React from 'react'
 import CompanySelectCardActions from './CompanySelectCardActions'
 
 function CompanySelectCard({setSelectedParentName, BACK_END_URL, setSelectedParentCategory, company, selectedCompany, setSelectedCompany, childCompanyArray, setChildCompanyArray}){
-    const {name, image, location, description, is_parent, company_structure, company_type, company_model, employees, children} = company
-    
+    const {name, logo, location, description, is_parent, structure, organization, industry, employees, children} = company
+
     const genericLogo = "https://istvankocsis.gallerycdn.vsassets.io/extensions/istvankocsis/reactcodesnippets/3.1/1582843313592/Microsoft.VisualStudio.Services.Icons.Default"
     const objectAssociations = [
-        {"For-profit": "https://www.logolynx.com/images/logolynx/40/40ab0511b81a7ca4faf68c02dd4411eb.png"},
-        {"Non-profit": "https://designups.com/wp-content/uploads/2020/01/non-profit-icon.png"},
+        {"For-Profit": "https://www.logolynx.com/images/logolynx/40/40ab0511b81a7ca4faf68c02dd4411eb.png"},
+        {"Non-Profit": "https://designups.com/wp-content/uploads/2020/01/non-profit-icon.png"},
+        {"Not-For-Profit" : "https://asruw.com.au/wp-content/uploads/2017/02/icon-not-for-profit.png"},
         {"Sole Proprietorship": "SP"},
         {"Partnership": "P"},
         {"S Corporation": "SC"},
         {"Corporation": "C"},
         {"Limited Liability Company": "LLC"}
+        
     ]
 
-    const companyType = objectAssociations.find(object => Object.keys(object)[0] === company_type)
-    const companyStructure = objectAssociations.find(object => Object.keys(object)[0] === company_structure)
+    const companyOrganization = objectAssociations.find(object => Object.keys(object)[0] === organization)
+    const companyStructure = objectAssociations.find(object => Object.keys(object)[0] === structure)
 
     const companyDetailsNameArrayA = ["Industry", "Location"]
-    const companyDetailsValueArrayA = [company_model, location]
+    const companyDetailsValueArrayA = [industry, location]
 
     const companyDetailsA = companyDetailsNameArrayA.map((detail, index) => 
         <div className="CompanySelectDetailsSubText" key={detail}>
@@ -46,7 +48,7 @@ function CompanySelectCard({setSelectedParentName, BACK_END_URL, setSelectedPare
                         <p>{name}</p>
                     </div>
                     <div className="CompanySelectCardImage">
-                        <img src={!image? genericLogo : image} alt="name"/>
+                        <img src={!logo? genericLogo : logo} alt="name"/>
                     </div>
                 </div>
 
@@ -75,8 +77,8 @@ function CompanySelectCard({setSelectedParentName, BACK_END_URL, setSelectedPare
                     </div>
 
                     <div className="CompanySelectDetailsIcons">
-                        <img src={Object.values(companyType)[0]} alt={company_type} title={company_type}/>
-                        <p title={company_structure}>{Object.values(companyStructure)[0]}</p>
+                        <img src={Object.values(companyOrganization)[0]} alt={organization} title={organization}/>
+                        <p title={structure}>{Object.values(companyStructure)[0]}</p>
                     </div>
                 </div>
             </div>

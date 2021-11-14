@@ -36,16 +36,16 @@ function CreateCompanyParentPanel({selectedParent, is_parent}){
                 <div className="CreateCompanyParentPanelBottomLeft">
                     <div>
                         <p>Structure:</p>
-                        <p>{selectedParent.company_structure}</p>
+                        <p>{selectedParent.structure}</p>
                     </div>
 
                     <div>
-                        <p>Type: </p>
-                        <p>{selectedParent.company_type}</p>
+                        <p>Organization: </p>
+                        <p>{selectedParent.organization}</p>
                     </div>
                     <div>
                         <p>Industry: </p>
-                        <p>{selectedParent.company_model}</p>
+                        <p>{selectedParent.industry}</p>
                     </div>
                 </div>
                 <div className="CreateCompanyParentPanelBottomRight">

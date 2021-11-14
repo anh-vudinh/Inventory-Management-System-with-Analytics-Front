@@ -848,7 +848,7 @@
 }
 
 .CreateCompanyStructure,
-.CreateCompanyType,
+.CreateCompanyOrganization,
 .CreateCompanyModel{
   position: relative;
   display: flex;
@@ -857,14 +857,14 @@
 }
 
 .CreateCompanyStructure p,
-.CreateCompanyType p,
+.CreateCompanyOrganization p,
 .CreateCompanyModel p{
   font-size: 24px;
   margin: 10px;
 }
 
 .CreateCompanyStructure select,
-.CreateCompanyType select,
+.CreateCompanyOrganization select,
 .CreateCompanyModel select{
   height: 40px;
   width: 350px;
@@ -918,6 +918,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: left;
   height: 150px;
   width: 100%;
   border: 5px dashed rgb(190, 190, 190);
@@ -977,6 +978,68 @@
   font-weight: bold;
 }
 
+.CreateCompanyErrorOverlay,
+.CreateCompanySuccessOverlay{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(15, 15, 15, 0.92);
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 300ms ease-in-out, opacity 300ms ease-in-out;
+}
+
+.CreateCompanyErrorContainer,
+.CreateCompanySuccessContainer{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 350px;
+  width: 600px;
+  border-radius: 10px;
+  background-color: rgb(207, 207, 207);
+  overflow: hidden;
+}
+
+.CreateCompanyErrorTitle{
+  width: 100%;
+  background-color: rgba(245, 245, 245, 0.98);
+}
+
+.CreateCompanyErrorTitle p{
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.CreateCompanyErrorMessage{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 200px;
+}
+
+.CreateCompanyErrorMessage p,
+.CreateCompanySuccessMessage p{
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.CreateCompanyErrorBtn button{
+  background-color: green;
+  color: whitesmoke;
+  font-size: 24px;
+  font-weight: 700;
+  border-radius: 8px;
+  height: 40px;
+  width: 100px;
+  border: 1px solid grey;
+}
 
 .hidden{
   position: absolute;

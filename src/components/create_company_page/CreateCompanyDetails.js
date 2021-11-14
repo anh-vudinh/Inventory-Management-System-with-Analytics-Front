@@ -3,22 +3,22 @@ import CreateCompanyParentPanel from "./CreateCompanyParentPanel";
 
 function CreateCompanyDetails({formData, setFormData, handleInputChange, handleFormSubmit, BACK_END_URL}){
 
-    const {name, street, city, state, zipcode, established, is_parent, company_structure, company_type, company_model, parent_name} = formData
+    const {name, street, city, state, zipcode, established, is_parent, structure, organization, industry, parent_name} = formData
 
     const [userCompaniesArray, setUserCompaniesArray] = useState([])
     const [selectedParent, setSelectedParent] = useState({
         name:"",
         location:"",
         is_parent: true,
-        company_structure: "",
-        company_type: "",
-        company_model: "",
+        structure: "",
+        organization: "",
+        industry: "",
         employees: 0,
         children: 0
     })
     const companyStructuresArray = ["-- select an option --", "Sole Proprietorship", "Partnership", "S Corporation", "Corporation", "Limited Liability Company"]
-    const companyTypesArray = ["-- select an option --", "For-Profit", "Non-Profit"]
-    const companyModelsArray = ["-- select an option --", "Agriculture, Forestry, Hunting and Fishing", "Manufacturing", "Retail Trade", "Accommodation and Food Services"]
+    const companyOrganizationsArray = ["-- select an option --", "For-Profit", "Non-Profit", "Not-For-Profit"]
+    const companyIndustriesArray = ["-- select an option --", "Agriculture, Forestry, Hunting and Fishing", "Manufacturing", "Retail Trade", "Accommodation and Food Services"]
     
 
     useEffect(()=>{
@@ -51,20 +51,19 @@ function CreateCompanyDetails({formData, setFormData, handleInputChange, handleF
         </option>
     )
 
-    const companyTypes = companyTypesArray.map(type => 
-        <option key={type} value={type}>
-            {type}
+    const companyOrganizations = companyOrganizationsArray.map(organization => 
+        <option key={organization} value={organization}>
+            {organization}
         </option>
     )
 
-    const companyModels = companyModelsArray.map(model => 
-        <option key={model}>
-            {model}
+    const companyIndustries = companyIndustriesArray.map(industry => 
+        <option key={industry}>
+            {industry}
         </option>
     )
 
     function handleSelectParent(e){
-        console.log(e.target.value)
         setSelectedParent(userCompaniesArray.find(company => company.name === e.target.value))
         handleInputChange(e)
     }
@@ -88,22 +87,22 @@ function CreateCompanyDetails({formData, setFormData, handleInputChange, handleF
                         <div className="CreateCompanySpecs">
                             <div className="CreateCompanyStructure">
                                 <p>Structure</p>
-                                <select name="company_structure" value={company_structure} onChange={handleInputChange}>
+                                <select name="structure" value={structure} onChange={handleInputChange}>
                                     {companyStructures}    
                                 </select>
                             </div>
 
-                            <div className="CreateCompanyType">
-                                <p>Type</p>
-                                <select name="company_type" value={company_type} onChange={handleInputChange}>
-                                    {companyTypes}    
+                            <div className="CreateCompanyOrganization">
+                                <p>Organization</p>
+                                <select name="organization" value={organization} onChange={handleInputChange}>
+                                    {companyOrganizations}    
                                 </select>
                             </div>
 
                             <div className="CreateCompanyModel">
                                 <p>Industry</p>
-                                <select name="company_model" value={company_model} onChange={handleInputChange}>
-                                    {companyModels}
+                                <select name="industry" value={industry} onChange={handleInputChange}>
+                                    {companyIndustries}
                                 </select>
                             </div>
                         </div>
@@ -113,6 +112,7 @@ function CreateCompanyDetails({formData, setFormData, handleInputChange, handleF
                                 <input type="checkbox" name="is_parent" checked={is_parent} onChange={handleInputChange}/>
                                 <p>{is_parent? "(Check) Parent Company" : "Child of: "}</p>
                                 <select className={`CreateCompanyParentSelect ${is_parent? "hidden" : ""}`} name="parent_name" value={parent_name} onChange={handleSelectParent}>
+                                    <option value="-- select an option --">-- select an option --</option>
                                     {parentCompanies}    
                                 </select>
                             </div>

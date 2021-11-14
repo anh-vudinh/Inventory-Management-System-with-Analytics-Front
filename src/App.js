@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route} from "react-router-dom";
 import LoginContainer from './components/login_page/LoginContainer';
 import CompanySelectContainer from './components/company_select_page/CompanySelectContainer';
 import DetailPageContainer from './components/detail_page/DetailPageContainer';
@@ -83,6 +83,8 @@ function App() {
         <Route path="/create_company">
           <CreateCompanyContainer
             BACK_END_URL={BACK_END_URL}
+            logoutSession={logoutSession}
+            isLoggedIn={isLoggedIn}
           />
         </Route>
 

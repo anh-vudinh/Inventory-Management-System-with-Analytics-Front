@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import CreateCompanyEmptyLogo from "./CreateCompanyEmptyLogo";
 
 function CreateCompanyLogo({formData, setFormData, handleInputChange}){

@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import CreateCompanyDescription from "./CreateCompanyDescription";
 import CreateCompanyDetails from "./CreateCompanyDetails";
 import CreateCompanyLogo from "./CreateCompanyLogo";
 
-function CreateCompanyForm({BACK_END_URL}){
+function CreateCompanyForm({BACK_END_URL, setErrorMessage, setCreatedCompany}){
 
     const formDataDefault = {
         logo: "",
@@ -16,9 +16,9 @@ function CreateCompanyForm({BACK_END_URL}){
         established: "",
         is_parent: true,
         parent_name: "",
-        company_structure: "",
-        company_type: "",
-        company_model: ""
+        structure: "",
+        organization: "",
+        industry: ""
     }
 
     const [formData, setFormData] = useState(formDataDefault)
@@ -31,6 +31,7 @@ function CreateCompanyForm({BACK_END_URL}){
     }
 
     function handleFormSubmit(){
+        if(formData.name === "") return;
         const headers = {
             method: 'POST',
             withCredentials: true,
@@ -47,11 +48,11 @@ function CreateCompanyForm({BACK_END_URL}){
         .then(resp => {
             if(resp.ok){
                 resp.json().then(data => {
-
+                    setCreatedCompany(data)
                 })
             }else{
                 resp.json().then(message => {
-
+                    setErrorMessage(message.error)
                 })
             }
         })
