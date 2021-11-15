@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Switch, Route, useHistory} from "react-router-dom";
 import LoginContainer from './components/login_page/LoginContainer';
 import CompanySelectContainer from './components/company_select_page/CompanySelectContainer';
-import DetailPageContainer from './components/detail_page/DetailPageContainer';
+import DetailsPageContainer from './components/detail_page/DetailsPageContainer';
 import CreateCompanyContainer from './components/create_company_page/CreateCompanyContainer';
 import LoadingPage from './components/LoadingPage';
 import Toolbar from './components/Toolbar';
@@ -85,9 +85,10 @@ function App() {
         </Route>
 
         <Route path="/detail_page/:id">
-          <DetailPageContainer
+          <DetailsPageContainer
             selectedCompany={selectedCompany}
             history={history}
+            BACK_END_URL={BACK_END_URL}
           />
         </Route>
 

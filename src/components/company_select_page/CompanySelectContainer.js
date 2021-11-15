@@ -5,7 +5,7 @@ import CompanySelectParents from './CompanySelectParents'
 import MinusIcon from '../../assets/MinusIcon.png'
 import PlusIcon from '../../assets/PlusIcon.png'
 
-function CompanySelectContainer({history, setIsLoading, logoutSession, selectedCompany, setSelectedCompany, currentUser, isLoggedIn, BACK_END_URL}){
+function CompanySelectContainer({history, setIsLoading, selectedCompany, setSelectedCompany, currentUser, isLoggedIn, BACK_END_URL}){
 
     const bgImage = "https://www.elomatic.com/en/assets/images/services/information-management/information-management.jpg"
     const logoutIcon = "https://www.pinclipart.com/picdir/big/126-1262666_open-exit-door-open-door-icon-png-clipart.png"

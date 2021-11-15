@@ -10,18 +10,18 @@
   position: absolute;
   z-index: 10;
   left: 50%;
-  bottom: 0%;
+  bottom: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
   width: fit-content;
   height: 10px;
-  background-color: transparent;
+  background-color: rgba(148, 148, 148, 0.6);
   border-radius: 5px;
   overflow: hidden;
   opacity: 0.4;
-  transition: height 400ms ease-in-out, opacity 400ms ease-in-out;
+  transition: background-color 0ms ease-in-out, 400ms ease-in-out, opacity 400ms ease-in-out;
 }
 
 .ToolbarContainer:hover{
@@ -29,6 +29,16 @@
   border-radius: 5px;
   opacity: 1;
   background-color: rgba(148, 148, 148, 0.3);
+}
+
+.ToolbarContainer div{
+  visibility: hidden;
+  transition: visibility 400ms ease-out;
+}
+
+.ToolbarContainer:hover div{
+  visibility: visible;
+  transition: visibility 400ms ease-out;
 }
 
 .ToolbarNavIcons{
@@ -654,47 +664,6 @@
   width: 45px;
 }
 
-.DetailPageContainer{
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  width: 100%;
-  height: 100vh;
-  background-color: aqua;
-}
-
-.DetailPagePanelTree{
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  width: 350px;
-  height: 100%;
-  background-color: blueviolet;
-}
-
-.DetailPagePanelDetails{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  width: 100%;
-  height: 100%;
-  background-color: whitesmoke;
-}
-
-.DetailsPagePanelTreeTitle{
-  display: flex;
-  align-items: center;
-  width: 100%;
-  height: 70px;
-  background-color: thistle;
-}
-
-.DetailsPagePanelTreeTitle p{
-  margin: 0px;
-  font-size: 28px;
-}
-
 .CreateCompanyContainer{
   position: relative;
   display: flex;
@@ -1132,6 +1101,90 @@
   height: 40px;
   width: 100px;
   border: 1px solid grey;
+}
+
+.DetailsPageContainer{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  background-color: aqua;
+}
+
+.DetailsPagePanelTree{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  text-align: left;
+  width: 350px;
+  height: 100%;
+  background-color: blueviolet;
+}
+
+ .DetailsPagePanelDetails{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+  /* height: 100%; */
+  background-color: whitesmoke;
+}
+
+.DetailsPagePanelTreeTitle{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 70px;
+  background-color: thistle;
+  overflow: hidden;
+}
+
+
+.DetailsPagePanelTreeTitle p{
+  margin: 0 0 0 10px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.DetailsPagePanelManagement,
+.DetailsPagePanelEmployees,
+.DetailsPagePanelProducts{
+  width: 100%;
+  height: 25px;
+  background-color: ivory;
+  overflow-y: hidden;
+  transition: height 500ms ease-in-out;
+}
+
+.DetailsPagePanelManagementTitle{
+  background-color: khaki;
+  margin: 2px 0 2px 0;
+}
+
+.DetailsPagePanelManagementTitle p{
+  margin: 0 0 0 10px;
+  font-weight: 700;
+}
+
+.DetailsPagePanelEmployeesTitle,
+.DetailsPagePanelProductsTitle {
+  background-color: khaki;
+  margin: 2px 0 2px 0;
+}
+
+.DetailsPagePanelEmployeesTitle p,
+.DetailsPagePanelProductsTitle p{
+  margin: 0 0 0 20px;
+  font-weight: 500;
+  font-size: 16px;
+} 
+
+
+.DetailsPagePanelShow{
+  height: fit-content;
+  overflow-y: scroll;
 }
 
 .hidden{
