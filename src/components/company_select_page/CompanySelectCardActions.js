@@ -13,7 +13,7 @@ function CompanySelectCardActions({history, setSelectedParentName, BACK_END_URL,
 
     const actionsBtns = actionsBtnsArray.map((btn, index) => {
 
-        if(btn === "See Children" && company.children < 1) return null;
+        if(btn === "See Children" && company.children_count < 1) return null;
 
         return (
             <div className="CompanySelectCardActionsBtn" key={btn} onClick={handleBtnClick}>
