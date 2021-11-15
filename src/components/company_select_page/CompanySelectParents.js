@@ -1,5 +1,5 @@
 import React from 'react'
-import CompanySelectCardContainer from './CompanySelectCardContainer'
+import CompanySelectCardsContainer from './CompanySelectCardsContainer'
 
 
 function CompanySelectParents({history, setSelectedParentName, BACK_END_URL, childCompanyArray, setChildCompanyArray, selectedCompany, setSelectedCompany, parentCompanyArray, selectedParentCategory, setSelectedParentCategory, MinusIcon, PlusIcon}){
@@ -14,7 +14,7 @@ function CompanySelectParents({history, setSelectedParentName, BACK_END_URL, chi
                 <p>{`(${parentCompanyArray.length})`}</p>
             </div>
 
-            <CompanySelectCardContainer
+            <CompanySelectCardsContainer
                 history={history}
                 BACK_END_URL={BACK_END_URL} 
                 cardContainerArray={parentCompanyArray}

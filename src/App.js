@@ -6,6 +6,7 @@ import CompanySelectContainer from './components/company_select_page/CompanySele
 import DetailPageContainer from './components/detail_page/DetailPageContainer';
 import CreateCompanyContainer from './components/create_company_page/CreateCompanyContainer';
 import LoadingPage from './components/LoadingPage';
+import Toolbar from './components/Toolbar';
 
 function App() {
 
@@ -35,9 +36,11 @@ function App() {
               if (data === null) return;
               setCurrentUser(data.username)
               setIsLoggedIn(true)
+              history.push("/company_select")
             })
         }
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
 
   function logoutSession(){
@@ -50,9 +53,9 @@ function App() {
 
     fetch(`${BACK_END_URL}/api/logout`, headers)
     .then(()=> {
-      console.log("signout")
       setIsLoggedIn(false)
       setCurrentUser("")
+      history.push("/")
     })
   }
   
@@ -99,6 +102,13 @@ function App() {
         </Route>
 
       </Switch>
+
+      {isLoggedIn? 
+        <Toolbar
+          history={history}
+          logoutSession={logoutSession}
+        />
+      : null}
 
       <LoadingPage
         isLoading={isLoading}

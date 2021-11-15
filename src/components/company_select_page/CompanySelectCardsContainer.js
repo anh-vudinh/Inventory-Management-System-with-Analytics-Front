@@ -1,12 +1,12 @@
 import React from 'react'
 import CompanySelectCard from './CompanySelectCard'
 
-function CompanySelectCardContainer({history, setSelectedParentName, BACK_END_URL, setSelectedParentCategory, childCompanyArray, setChildCompanyArray, cardContainerArray, selectedCompany, setSelectedCompany}){
+function CompanySelectCardsContainer({history, setSelectedParentName, BACK_END_URL, setSelectedParentCategory, childCompanyArray, setChildCompanyArray, cardContainerArray, selectedCompany, setSelectedCompany}){
 
-    const companyCardsList = cardContainerArray.map(company => 
+    const companyCardsList = cardContainerArray.map((company, index) => 
         <CompanySelectCard
             history={history}
-            key={company.id}
+            key={`${company.name}${index}`}
             BACK_END_URL={BACK_END_URL}
             company={company}
             setSelectedParentName={setSelectedParentName}
@@ -23,4 +23,4 @@ function CompanySelectCardContainer({history, setSelectedParentName, BACK_END_UR
     )
 }
 
-export default CompanySelectCardContainer
+export default CompanySelectCardsContainer

@@ -1,9 +1,8 @@
-import React, {useState} from 'react'
-import CompanySelectCardContainer from './CompanySelectCardContainer'
+import React from 'react'
+import CompanySelectCardsContainer from './CompanySelectCardsContainer'
 
 function CompanySelectChildren({history, selectedParentName, setSelectedParentName, selectedCompany, setSelectedCompany, childCompanyArray, setChildCompanyArray, selectedParentCategory, setSelectedParentCategory, MinusIcon, PlusIcon}){
 
-    
     return(
         <div className={`CompanySelectChildren ${selectedParentCategory? "" : "csExpand"}`}>
 
@@ -13,7 +12,7 @@ function CompanySelectChildren({history, selectedParentName, setSelectedParentNa
                 <p>{selectedParentName === ""? "": `(${selectedParentName})`}</p>
             </div>
 
-            <CompanySelectCardContainer
+            <CompanySelectCardsContainer
                 history={history}
                 cardContainerArray={childCompanyArray}          //cardContainerArray converts childCompanyArray to general variable before passing to CardContainer
                 setChildCompanyArray={setChildCompanyArray}

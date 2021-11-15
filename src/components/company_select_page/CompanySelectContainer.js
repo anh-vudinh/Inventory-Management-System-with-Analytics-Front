@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react'
-import { Redirect } from "react-router-dom";
 import CompanySelectChildren from './CompanySelectChildren'
 import CompanySelectHeader from './CompanySelectHeader'
 import CompanySelectParents from './CompanySelectParents'
@@ -20,7 +19,6 @@ function CompanySelectContainer({history, setIsLoading, logoutSession, selectedC
     useEffect(()=>{
         if(!isLoggedIn) return;
         setIsLoading(true)
-        //fetch user.companies
         const headers = {
             withCredentials: true,
             credentials: 'include',
@@ -40,9 +38,6 @@ function CompanySelectContainer({history, setIsLoading, logoutSession, selectedC
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
-    if(!isLoggedIn){
-        return <Redirect to="/"/>
-    }
 
     function handleClickCreateCompany(){
         history.push("/create_company")
@@ -77,10 +72,6 @@ function CompanySelectContainer({history, setIsLoading, logoutSession, selectedC
                 selectedParentCategory={selectedParentCategory} setSelectedParentCategory={setSelectedParentCategory}
                 childCompanyArray={childCompanyArray} setChildCompanyArray={setChildCompanyArray}
             />
-
-            <div className="CompanySelectLogout" onClick={logoutSession}>
-                <img src={logoutIcon} alt="logout" title="Logout"/>
-            </div>
 
             <div className="CompanySelectCreateCompany" onClick={handleClickCreateCompany}>
                 <img src={addIcon} alt="create company" title="Create Company"/>
