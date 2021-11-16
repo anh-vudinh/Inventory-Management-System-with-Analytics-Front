@@ -2,7 +2,7 @@ import React from 'react'
 import DetailsPagePanelProducts from './DetailsPagePanelProducts'
 import DetailsPagePanelEmployees from './DetailsPagePanelEmployees'
 
-function DetailsPagePanelManagement({BACK_END_URL, selectedMainCategory, setSelectedMainCategory, selectedSubCategory, setSelectedSubCategory, selectedUser, setSelectedUser, selectedCompany}){
+function DetailsPagePanelManagement({BACK_END_URL, selectedMainCategory, setSelectedMainCategory, selectedSubCategory, setSelectedSubCategory, selectedEmployee, setSelectedEmployee, selectedCompany}){
 
     function handleMainCategoryClick(){
         if(selectedMainCategory === "Management"){
@@ -22,7 +22,7 @@ function DetailsPagePanelManagement({BACK_END_URL, selectedMainCategory, setSele
 
     return(
         <div className={`DetailsPagePanelManagement ${selectedMainCategory === "Management"? "DetailsPagePanelShow" : ""}`}>
-            <div className="DetailsPagePanelManagementTitle" onClick={handleMainCategoryClick}>
+            <div className={`DetailsPagePanelManagementTitle ${selectedMainCategory === "Management"? "DPPSelected" : "" }`} onClick={handleMainCategoryClick}>
                 <p>Management</p>
             </div>
             <DetailsPagePanelEmployees
@@ -30,6 +30,7 @@ function DetailsPagePanelManagement({BACK_END_URL, selectedMainCategory, setSele
                 selectedSubCategory={selectedSubCategory}
                 handleSubCategoryClick={handleSubCategoryClick}
                 BACK_END_URL={BACK_END_URL}
+                selectedEmployee={selectedEmployee} setSelectedEmployee={setSelectedEmployee}
             />
             <DetailsPagePanelProducts
                 selectedCompany={selectedCompany}

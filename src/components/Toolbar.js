@@ -19,18 +19,20 @@ function Toolbar({history, logoutSession}){
 
     return(
         <div className="ToolbarContainer">
-            <div className="ToolbarNavIcons">
-                <img src="https://cdn2.iconfinder.com/data/icons/50-material-design-round-corner-style/44/Replay_Reverse-512.png" alt="back button" title="Go Back" onClick={handleGoBackClick}/>
-                <img src="https://cdn2.iconfinder.com/data/icons/50-material-design-round-corner-style/44/Replay_Reverse-512.png" alt="forward button" title="Go Forward" onClick={handleGoForwardClick}/>
-            </div>
-            <div className="ToolbarUserIcons">
-                {toolbarArray.length < 1? 
-                    <img className="ToolbarAddIcon" src="https://cdn0.iconfinder.com/data/icons/circles-2/100/sign-square-dashed-plus-512.png" alt="add icon" title="Drag Drop Toolbar Icons Here To Add"/>
-                : null}
-                {toolbarIcons}
-            </div>
-            <div className="ToolbarLogoutIcon" onClick={logoutSession}>
-                <img src={logoutIcon} alt="logout" title="Logout"/>
+            <div className="Toolbar">
+                <div className="ToolbarNavIcons">
+                    <img src="https://cdn2.iconfinder.com/data/icons/50-material-design-round-corner-style/44/Replay_Reverse-512.png" alt="back button" title="Go Back" onClick={handleGoBackClick}/>
+                    <img src="https://cdn2.iconfinder.com/data/icons/50-material-design-round-corner-style/44/Replay_Reverse-512.png" alt="forward button" title="Go Forward" onClick={handleGoForwardClick}/>
+                </div>
+                <div className="ToolbarUserIcons">
+                    {toolbarArray.length < 1? 
+                        <img className="ToolbarAddIcon" src="https://cdn0.iconfinder.com/data/icons/circles-2/100/sign-square-dashed-plus-512.png" alt="add icon" title="Drag Drop Toolbar Icons Here To Add"/>
+                    : null}
+                    {toolbarIcons}
+                </div>
+                <div className="ToolbarLogoutIcon" onClick={logoutSession}>
+                    <img src={logoutIcon} alt="logout" title="Logout"/>
+                </div>
             </div>
         </div>
     )

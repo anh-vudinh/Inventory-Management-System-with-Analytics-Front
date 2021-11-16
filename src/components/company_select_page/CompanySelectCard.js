@@ -2,7 +2,7 @@ import React from 'react'
 import CompanySelectCardActions from './CompanySelectCardActions'
 
 function CompanySelectCard({history, setSelectedParentName, BACK_END_URL, setSelectedParentCategory, company, selectedCompany, setSelectedCompany, childCompanyArray, setChildCompanyArray}){
-    const {name, logo, location, description, is_parent, structure, organization, industry, employees_count, children_count} = company
+    const {name, logo, location, description, structure, organization, industry, employees_count, children_count} = company
 
     const genericLogo = "https://istvankocsis.gallerycdn.vsassets.io/extensions/istvankocsis/reactcodesnippets/3.1/1582843313592/Microsoft.VisualStudio.Services.Icons.Default"
     const objectAssociations = [
@@ -42,7 +42,7 @@ function CompanySelectCard({history, setSelectedParentName, BACK_END_URL, setSel
 
     return(
         <div className="CompanySelectCardContainer">
-            <div className="CompanySelectCard">
+            <div className="CompanySelectCard" title={description}>
                 <div className="CompanySelectCardTitle">
                     <div className="CompanySelectCardTitleText">
                         <p>{name}</p>

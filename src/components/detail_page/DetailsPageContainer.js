@@ -6,7 +6,7 @@ function DetailsPageContainer({BACK_END_URL, selectedCompany}){
 
     const [selectedMainCategory, setSelectedMainCategory] = useState("")
     const [selectedSubCategory, setSelectedSubCategory] = useState("")
-    const [selectedEmployee, setSelectedEmployee] = useState({})
+    const [selectedEmployee, setSelectedEmployee] = useState({id:0})
 
     return(
         <div className="DetailsPageContainer">
@@ -14,11 +14,12 @@ function DetailsPageContainer({BACK_END_URL, selectedCompany}){
                 selectedCompany={selectedCompany}
                 selectedMainCategory={selectedMainCategory} setSelectedMainCategory={setSelectedMainCategory}
                 selectedSubCategory={selectedSubCategory} setSelectedSubCategory={setSelectedSubCategory}
-                selectedEmployees={selectedEmployee} setSelectedEmployees={setSelectedEmployee}
+                selectedEmployee={selectedEmployee} setSelectedEmployee={setSelectedEmployee}
                 BACK_END_URL={BACK_END_URL}
             />
             <DetailsPagePanelDetails
                 BACK_END_URL={BACK_END_URL}
+                selectedEmployee={selectedEmployee}
             />
         </div>
     )

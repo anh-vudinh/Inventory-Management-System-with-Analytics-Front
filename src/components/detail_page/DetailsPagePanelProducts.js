@@ -10,7 +10,7 @@ function DetailsPagePanelProducts({BACK_END_URL, handleSubCategoryClick, selecte
 
     return(
         <div className={`DetailsPagePanelProducts ${selectedSubCategory === "Products"? "DetailsPagePanelShow" : "" }`}>
-             <div className="DetailsPagePanelProductsTitle" onClick={()=> handleSubCategoryClick("Products")}>
+             <div className={`DetailsPagePanelProductsTitle ${selectedSubCategory === "Products"? "DPPSelected" : ""}`} onClick={()=> handleSubCategoryClick("Products")}>
                 <p>Products</p>
             </div>
         </div>

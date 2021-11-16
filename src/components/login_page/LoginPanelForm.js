@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Redirect } from "react-router-dom";
 import PersonIcon from '../../assets/PersonIcon.png'
 import LoginPanelFormFooter from './LoginPanelFormFooter'
 
@@ -14,10 +13,6 @@ function LoginPanelForm({history, BACK_END_URL, currentUser, setCurrentUser, isL
 
     const [formData, setFormData] = useState(formDataDefault)
     const [errorMessage, setErrorMessage] = useState("")
-
-    // if(isLoggedIn){
-    //     return <Redirect to="/company_select"/>
-    // }
 
     function onChangeFormInput(e){
         setFormData({...formData, [e.target.name]: e.target.value})

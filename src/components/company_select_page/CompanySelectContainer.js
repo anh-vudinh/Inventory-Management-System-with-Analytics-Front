@@ -8,7 +8,6 @@ import PlusIcon from '../../assets/PlusIcon.png'
 function CompanySelectContainer({history, setIsLoading, selectedCompany, setSelectedCompany, currentUser, isLoggedIn, BACK_END_URL}){
 
     const bgImage = "https://www.elomatic.com/en/assets/images/services/information-management/information-management.jpg"
-    const logoutIcon = "https://www.pinclipart.com/picdir/big/126-1262666_open-exit-door-open-door-icon-png-clipart.png"
     const addIcon = "http://www.clker.com/cliparts/E/D/d/g/1/1/white-plus-md.png"
     const [selectedParentCategory, setSelectedParentCategory] = useState(true)
     const [parentCompanyArray, setParentCompanyArray] = useState([])

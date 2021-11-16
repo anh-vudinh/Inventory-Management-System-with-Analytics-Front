@@ -39,6 +39,7 @@ function CreateCompanyDetails({setIsLoading, formData, setFormData, handleInputC
             setUserCompaniesArray(data)
             setIsLoading(false)
         })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     const parentCompanies = userCompaniesArray.map((company, index) => 
@@ -69,7 +70,6 @@ function CreateCompanyDetails({setIsLoading, formData, setFormData, handleInputC
         setSelectedParent(userCompaniesArray.find(company => company.name === e.target.value))
         handleInputChange(e)
     }
-
 
     return(
         <div className="CreateCompanyDetails">

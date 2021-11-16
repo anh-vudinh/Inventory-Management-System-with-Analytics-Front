@@ -1,5 +1,4 @@
-import React, {useState} from 'react'
-import { Redirect } from "react-router-dom";
+import React from 'react'
 
 function CompanySelectCardActions({history, setSelectedParentName, BACK_END_URL, company, setSelectedParentCategory, selectedCompany, setSelectedCompany, childCompanyArray, setChildCompanyArray}){
 
@@ -16,8 +15,8 @@ function CompanySelectCardActions({history, setSelectedParentName, BACK_END_URL,
         if(btn === "See Children" && company.children_count < 1) return null;
 
         return (
-            <div className="CompanySelectCardActionsBtn" key={btn} onClick={handleBtnClick}>
-                <img src={actionsBtnImageArray[index]} alt={btn} title={btn}/>
+            <div className="CompanySelectCardActionsBtn" key={btn} title={btn} onClick={handleBtnClick}>
+                <img src={actionsBtnImageArray[index]} alt={btn}/>
             </div>
         )
     })
@@ -29,7 +28,7 @@ function CompanySelectCardActions({history, setSelectedParentName, BACK_END_URL,
             setSelectedCompany(company)
             history.push(`/detail_page/${id}`)
             
-        } else {
+        } else if(e.target.title === actionsBtnsArray[1]){
             //fetch children of company and set
             fetchFromDB(`/api/get_children/${id}`)
         }
