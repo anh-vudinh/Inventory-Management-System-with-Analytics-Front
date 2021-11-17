@@ -1484,7 +1484,7 @@
   overflow: hidden;
   border-radius: 10px;
   border: 1px outset gray;
-  background: linear-gradient(168deg, whitesmoke 0%, rgb(212, 212, 212) 80%);
+  background: linear-gradient(168deg, whitesmoke 0%, rgb(240, 240, 240) 70%);
 }
 
 .DetailsPagePanelDetailsActionsItemImage img{
