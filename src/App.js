@@ -15,8 +15,9 @@ function App() {
   const [isLoading, setIsLoading] = useState(false)
   const [currentUser, setCurrentUser] = useState("")
   const [selectedCompany, setSelectedCompany] = useState({name:""})
+  const [currentPage, setCurrentPage] =  useState({page_name: "", endpoint: ""})
+  const [toolbarArray, setToolbarArray] = useState([])
   const history = useHistory();
-
 
   useEffect(() => {
     const headers = {
@@ -58,6 +59,12 @@ function App() {
       history.push("/")
     })
   }
+
+  function handleToolbarPageAdd(){
+    if(toolbarArray.find( obj => currentPage.page_name === obj.page_name) === undefined){
+      setToolbarArray([...toolbarArray, currentPage])
+    }
+  }
   
   return (
     <div className="App">
@@ -81,6 +88,7 @@ function App() {
             BACK_END_URL={BACK_END_URL}
             selectedCompany={selectedCompany} setSelectedCompany={setSelectedCompany}
             history={history}
+            currentPage={currentPage} setCurrentPage={setCurrentPage}
           />
         </Route>
 
@@ -89,6 +97,7 @@ function App() {
             selectedCompany={selectedCompany}
             history={history}
             BACK_END_URL={BACK_END_URL}
+            currentPage={currentPage} setCurrentPage={setCurrentPage}
           />
         </Route>
 
@@ -99,6 +108,7 @@ function App() {
             logoutSession={logoutSession}
             isLoggedIn={isLoggedIn}
             history={history}
+            currentPage={currentPage} setCurrentPage={setCurrentPage}
           />
         </Route>
 
@@ -108,6 +118,8 @@ function App() {
         <Toolbar
           history={history}
           logoutSession={logoutSession}
+          handleToolbarPageAdd={handleToolbarPageAdd}
+          toolbarArray={toolbarArray} setToolbarArray={setToolbarArray}
         />
       : null}
 

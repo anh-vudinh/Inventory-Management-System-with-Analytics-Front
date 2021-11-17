@@ -5,7 +5,7 @@ import CompanySelectParents from './CompanySelectParents'
 import MinusIcon from '../../assets/MinusIcon.png'
 import PlusIcon from '../../assets/PlusIcon.png'
 
-function CompanySelectContainer({history, setIsLoading, selectedCompany, setSelectedCompany, currentUser, isLoggedIn, BACK_END_URL}){
+function CompanySelectContainer({ currentPage, setCurrentPage, history, setIsLoading, selectedCompany, setSelectedCompany, currentUser, isLoggedIn, BACK_END_URL}){
 
     const bgImage = "https://www.elomatic.com/en/assets/images/services/information-management/information-management.jpg"
     const addIcon = "http://www.clker.com/cliparts/E/D/d/g/1/1/white-plus-md.png"
@@ -17,6 +17,7 @@ function CompanySelectContainer({history, setIsLoading, selectedCompany, setSele
 
     useEffect(()=>{
         if(!isLoggedIn) return;
+        setCurrentPage({page_name:"Company Select", endpoint: "/company_select"})
         setIsLoading(true)
         const headers = {
             withCredentials: true,

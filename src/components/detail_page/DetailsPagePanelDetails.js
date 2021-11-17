@@ -35,7 +35,9 @@ function DetailsPagePanelDetails({selectedEmployee, BACK_END_URL}){
             <DetailsPagePanelExtra
                 employeeFullDetails={employeeFullDetails}
             />
-            <DetailsPagePanelActions/>
+            <DetailsPagePanelActions
+                employeeFullDetails={employeeFullDetails}
+            />
         </div>
     )
 }

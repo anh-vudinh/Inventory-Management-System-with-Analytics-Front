@@ -67,9 +67,16 @@
   transform: rotate(180deg);
 }
 
-.ToolbarAddIcon{
+.ToolbarUserIcons img{
+  height: 35px;
+  width: 35px;
+  margin: 0 5px 0 5px;
+}
+
+.ToolbarAddIcon img{
   height: 50px;
   width: 50px;
+  margin: 0 5px 0 5px;
 }
 
 .ToolbarLogoutIcon{
@@ -1401,8 +1408,9 @@
   display: flex;
   flex-direction: column;
   text-align: left;
-  height: 90%;
+  height: fit-content;
   width: 90%;
+  padding: 5px;
   border-radius: 10px;
   border: 5px dashed rgb(224, 224, 224);
 }
@@ -1410,7 +1418,7 @@
 .DetailsPagePanelDetailsExtraItem{
   display: flex;
   flex-direction: row;
-  margin: 5px 0 5px 0;
+  margin: 5px 0 5px 5px;
 }
 
 .DetailsPagePanelDetailsExtraItem p:first-child{
@@ -1427,8 +1435,64 @@
   position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   width: 35%;
   height: 100%;
-  background-color: yellow;
+}
+
+.DetailsPagePanelDetailsActionsTitle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+}
+
+.DetailsPagePanelDetailsActions p:first-child{
+  margin: 15px;
+  font-weight: 700;
+  font-size: 28px;
+}
+
+.DetailsPagePanelDetailsActionsBtnsContainer{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  height: fit-content;
+  border-radius: 10px;
+  padding: 15px;
+  background-color: rgb(224, 224, 224);
+}
+
+.DetailsPagePanelDetailsActionsItem{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+  margin: 5px 10px 5px 5px;
+}
+
+.DetailsPagePanelDetailsActionsItemImage{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 50px;
+  overflow: hidden;
+  border-radius: 10px;
+  border: 1px outset gray;
+  background: linear-gradient(168deg, whitesmoke 0%, rgb(212, 212, 212) 80%);
+}
+
+.DetailsPagePanelDetailsActionsItemImage img{
+  height: 40px;
+  width: 40px;
+}
+
+.DetailsPagePanelDetailsActionsItem p{
+  margin: 0 0 0 5px;
+  font-weight: 700;
 }
