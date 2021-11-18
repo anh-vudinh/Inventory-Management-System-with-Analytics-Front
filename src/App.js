@@ -1,12 +1,13 @@
 import './App.css';
 import React, { useEffect, useState } from 'react';
-import { Switch, Route, useHistory} from "react-router-dom";
+import { Switch, Route, useHistory } from "react-router-dom";
 import LoginContainer from './components/login_page/LoginContainer';
 import CompanySelectContainer from './components/company_select_page/CompanySelectContainer';
 import DetailsPageContainer from './components/detail_page/DetailsPageContainer';
 import CreateCompanyContainer from './components/create_company_page/CreateCompanyContainer';
 import LoadingPage from './components/LoadingPage';
 import Toolbar from './components/Toolbar';
+import ApplicantsContainer from './components/applicants_page/ApplicantsContainer';
 
 function App() {
 
@@ -17,9 +18,12 @@ function App() {
   const [selectedCompany, setSelectedCompany] = useState({name:""})
   const [currentPage, setCurrentPage] =  useState({page_name: "", endpoint: ""})
   const [toolbarArray, setToolbarArray] = useState([])
+  const [loginErrorMessage, setLoginErrorMessage] = useState("")
   const history = useHistory();
 
   useEffect(() => {
+    if(isLoggedIn) return;
+    setLoginErrorMessage("")
     const headers = {
       withCredentials: true,
       credentials: 'include',
@@ -39,6 +43,10 @@ function App() {
               setIsLoggedIn(true)
               history.push("/company_select")
             })
+        }else{
+          resp.json().then(message => 
+            setLoginErrorMessage(message.error)
+          )
         }
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -76,6 +84,7 @@ function App() {
             currentUser={currentUser} setCurrentUser={setCurrentUser}
             BACK_END_URL={BACK_END_URL}
             history={history}
+            loginErrorMessage={loginErrorMessage} setLoginErrorMessage={setLoginErrorMessage}
           />
         </Route>
 
@@ -109,6 +118,17 @@ function App() {
             isLoggedIn={isLoggedIn}
             history={history}
             currentPage={currentPage} setCurrentPage={setCurrentPage}
+          />
+        </Route>
+
+        <Route path="/applicants">
+          <ApplicantsContainer
+            history={history}
+            setIsLoading={setIsLoading}
+            BACK_END_URL={BACK_END_URL}
+            isLoggedIn={isLoggedIn}
+            currentPage={currentPage} setCurrentPage={setCurrentPage}
+            selectedCompany={selectedCompany}
           />
         </Route>
 

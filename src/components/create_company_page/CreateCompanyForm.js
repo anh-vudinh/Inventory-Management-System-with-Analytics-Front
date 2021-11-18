@@ -16,6 +16,7 @@ function CreateCompanyForm({setIsLoading, BACK_END_URL, setErrorMessage, setCrea
         established: "",
         is_parent: true,
         parent_name: "",
+        is_active: true,
         structure: "",
         organization: "",
         industry: ""

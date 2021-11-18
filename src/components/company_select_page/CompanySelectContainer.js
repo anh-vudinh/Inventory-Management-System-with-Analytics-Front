@@ -16,7 +16,7 @@ function CompanySelectContainer({ currentPage, setCurrentPage, history, setIsLoa
     
 
     useEffect(()=>{
-        if(!isLoggedIn) return;
+        if(!isLoggedIn) return history.push("/");
         setCurrentPage({page_name:"Company Select", endpoint: "/company_select"})
         setIsLoading(true)
         const headers = {
@@ -65,6 +65,7 @@ function CompanySelectContainer({ currentPage, setCurrentPage, history, setIsLoa
 
             <CompanySelectChildren
                 history={history}
+                BACK_END_URL={BACK_END_URL}
                 MinusIcon={MinusIcon}
                 PlusIcon={PlusIcon}
                 selectedParentName={selectedParentName} setSelectedParentName={setSelectedParentName}

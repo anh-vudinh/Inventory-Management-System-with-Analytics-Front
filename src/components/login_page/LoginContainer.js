@@ -2,7 +2,7 @@ import React from 'react'
 import LoginPanelForm from './LoginPanelForm'
 import LoginPanelImage from './LoginPanelImage'
 
-function LoginContainer({history, isLoggedIn, setIsLoggedIn, BACK_END_URL, currentUser, setCurrentUser}){
+function LoginContainer({loginErrorMessage, setLoginErrorMessage, history, isLoggedIn, setIsLoggedIn, BACK_END_URL, currentUser, setCurrentUser}){
 
     return(
         <div className="LoginContainer">
@@ -13,6 +13,7 @@ function LoginContainer({history, isLoggedIn, setIsLoggedIn, BACK_END_URL, curre
                 currentUser={currentUser} setCurrentUser={setCurrentUser}
                 isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}
                 history={history}
+                loginErrorMessage={loginErrorMessage} setLoginErrorMessage={setLoginErrorMessage}
             />
         </div>
     )

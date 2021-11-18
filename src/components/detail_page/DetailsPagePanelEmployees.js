@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 
-function DetailsPagePanelEmployees({BACK_END_URL, handleSubCategoryClick, selectedSubCategory, selectedCompany, selectedEmployee, setSelectedEmployee}){
+function DetailsPagePanelEmployees({history, BACK_END_URL, handleSubCategoryClick, selectedSubCategory, selectedCompany, selectedEmployee, setSelectedEmployee}){
 
     const [employeesArray, setEmployeesArray] = useState([])
 
@@ -51,6 +51,9 @@ function DetailsPagePanelEmployees({BACK_END_URL, handleSubCategoryClick, select
                 <p>{`Employees (${employeesArray.length})`}</p>
             </div>
             <div className="DetailsPagePanelEmployeesList">
+                <div className="DetailsPagePanelAddEmployeeName" onClick={()=>history.push("/applicants")}>
+                    <p>ADD EMPLOYEE</p>    
+                </div>
                 {employeesList}
             </div>
         </div>

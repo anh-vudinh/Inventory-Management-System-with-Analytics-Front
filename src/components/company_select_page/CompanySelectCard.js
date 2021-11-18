@@ -1,9 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 import CompanySelectCardActions from './CompanySelectCardActions'
 
 function CompanySelectCard({history, setSelectedParentName, BACK_END_URL, setSelectedParentCategory, company, selectedCompany, setSelectedCompany, childCompanyArray, setChildCompanyArray}){
-    const {name, logo, location, description, structure, organization, industry, employees_count, children_count} = company
+    const {name, logo, location, description, structure, is_active, organization, industry, employees_count, children_count} = company
 
+    const [isActive, setIsActive] = useState(is_active)
     const genericLogo = "https://istvankocsis.gallerycdn.vsassets.io/extensions/istvankocsis/reactcodesnippets/3.1/1582843313592/Microsoft.VisualStudio.Services.Icons.Default"
     const objectAssociations = [
         {"For-Profit": "https://www.logolynx.com/images/logolynx/40/40ab0511b81a7ca4faf68c02dd4411eb.png"},
@@ -14,7 +15,6 @@ function CompanySelectCard({history, setSelectedParentName, BACK_END_URL, setSel
         {"S Corporation": "SC"},
         {"Corporation": "C"},
         {"Limited Liability Company": "LLC"}
-        
     ]
 
     const companyOrganization = objectAssociations.find(object => Object.keys(object)[0] === organization)
@@ -42,7 +42,7 @@ function CompanySelectCard({history, setSelectedParentName, BACK_END_URL, setSel
 
     return(
         <div className="CompanySelectCardContainer">
-            <div className="CompanySelectCard" title={description}>
+            <div className={`CompanySelectCard ${isActive? "" : "locked"}`} title={description}>
                 <div className="CompanySelectCardTitle">
                     <div className="CompanySelectCardTitleText">
                         <p>{name}</p>
@@ -91,6 +91,7 @@ function CompanySelectCard({history, setSelectedParentName, BACK_END_URL, setSel
                 setSelectedParentName={setSelectedParentName}
                 selectedCompany={selectedCompany} setSelectedCompany={setSelectedCompany}
                 childCompanyArray={childCompanyArray} setChildCompanyArray={setChildCompanyArray}
+                isActive={isActive} setIsActive={setIsActive}
             />
         </div>
         

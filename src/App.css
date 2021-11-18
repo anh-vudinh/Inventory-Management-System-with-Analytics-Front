@@ -25,7 +25,7 @@
   flex-direction: row;
   width: fit-content;
   height: 10px;
-  background-color: rgba(148, 148, 148, 0.6);
+  background-color: rgba(148, 148, 148, 0.8);
   border-radius: 5px;
   overflow: hidden;
   opacity: 0.4;
@@ -36,7 +36,7 @@
   height: 70px;
   border-radius: 5px;
   opacity: 1;
-  background-color: rgba(148, 148, 148, 0.3);
+  background-color: rgb(185, 185, 185);
 }
 
 .Toolbar div{
@@ -491,6 +491,10 @@
   -moz-box-shadow: 0 0 3px #ccc;
   -webkit-box-shadow: 0 0 3px #ccc;
   box-shadow: 0 0 10px rgba(15, 15, 15, 0.8);
+}
+
+.locked{
+  filter: sepia(100%);
 }
 
 .CompanySelectCardTitle{
@@ -980,6 +984,11 @@
   margin-bottom:15px;
 }
 
+.CreateCompanyParentSelectSec img:first-child{
+  height: 150px;
+  width: 150px;
+}
+
 .CreateCompanyParentSelect{
   position: relative;
   height: 40px;
@@ -1168,6 +1177,11 @@
   transition: max-height 300ms ease-in-out;
 }
 
+
+.DetailsPagePanelEmployeeName p{
+  font-size: 12px;
+}
+
 .DetailsPagePanelManagementTitle,
 .DetailsPagePanelAnalyticsTitle{
   background-color: white;
@@ -1198,8 +1212,21 @@
 .DetailsPagePanelEmployeesList p,
 .DetailsPagePanelProductsList p{
   margin: 0 0 0 35px;
-  font-size: 12px;
+  /* font-size: 12px; */
 } 
+
+.DetailsPagePanelAddEmployeeName{
+  background-color: rgb(235, 235, 235);
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 14px;
+  font-style: italic;
+  text-align: center;
+}
+
+.DetailsPagePanelAddEmployeeName p{
+  margin: 0;
+}
 
 
 .DetailsPagePanelShow{
@@ -1208,7 +1235,7 @@
 }
 
 .DetailsPagePanelShow::-webkit-scrollbar {
-  width: 5px;
+  width: 0px;
 }
 
 .DetailsPagePanelShow::-webkit-scrollbar-track {
@@ -1410,7 +1437,7 @@
   text-align: left;
   height: fit-content;
   width: 90%;
-  padding: 5px;
+  /* padding: 5px; */
   border-radius: 10px;
   border: 5px dashed rgb(224, 224, 224);
 }
@@ -1418,12 +1445,12 @@
 .DetailsPagePanelDetailsExtraItem{
   display: flex;
   flex-direction: row;
-  margin: 5px 0 5px 5px;
+  margin: 5px 0 5px 0;
 }
 
 .DetailsPagePanelDetailsExtraItem p:first-child{
   font-weight: 600;
-  margin: 0 0 10px 0;
+  margin: 0 7px 10px 10px;
 }
 
 .DetailsPagePanelDetailsExtraItem p:last-child{
@@ -1437,7 +1464,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   width: 35%;
   height: 100%;
 }
@@ -1460,10 +1487,11 @@
   display: flex;
   flex-direction: column;
   width: 70%;
-  height: fit-content;
+  height: 80%;
   border-radius: 10px;
   padding: 15px;
   background-color: rgb(224, 224, 224);
+  overflow-y: scroll;
 }
 
 .DetailsPagePanelDetailsActionsItem{
@@ -1496,3 +1524,188 @@
   margin: 0 0 0 5px;
   font-weight: 700;
 }
+
+.ApplicantsContainer{
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  background-color: white;
+}
+
+.ApplicantsContainerBGImage{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.ApplicantsContainerBGImage img{
+  transform: translate(-400px, 100px);
+  height: 100%;
+  filter: brightness(0.7) grayscale(0.3);
+}
+
+.ApplicantsHeader{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 15%;
+  background: linear-gradient(180deg, rgb(200, 200, 200) 0%, whitesmoke 50%, rgb(200, 200, 200) 100%);
+  overflow: hidden;
+}
+
+.ApplicantsHeaderTitle{
+  position: relative;
+}
+
+.ApplicantsHeaderTitle p{
+  font-size: 3em;
+  font-weight: 700;
+  margin: 0;
+}
+
+.ApplicantsTableContainer{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 85%;
+  width: 100%;
+}
+
+.ApplicantsTable{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  height: 90%;
+  width: fit-content;
+  background-color: rgba(255, 255, 255, 0.30);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.ApplicantsTableHeaders{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* justify-content: space-around; */
+  width: 100%;
+  height: 50px;
+  background-color: white;
+}
+
+.ApplicantsTableHeaders p{
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.ApplicantsTableList{
+  overflow-y: scroll;
+}
+
+.ApplicantsTableList::-webkit-scrollbar {
+  width: 0px;
+}
+
+.ApplicantsTableList::-webkit-scrollbar-track {
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  display: none;
+  scrollbar-width: none;
+}
+
+.ApplicantsTableList::-webkit-scrollbar-thumb {
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  display: none;
+  scrollbar-width: none;
+}
+
+.ApplicantsTableItem{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  height: fit-content;
+  background-color: rgba(255, 255, 255, 0.85);
+}
+
+.ApplicantsTableItem p{
+  margin: 0;
+  font-weight: 600;
+}
+
+.atiAlt{
+  background-color: rgb(224, 224, 224);
+}
+
+.Application_Date,
+.ApplicantsTableItemApplicationDate{
+  width: 200px;
+}
+
+.Name,
+.ApplicantsTableItemApplicationName{
+  width: 200px;
+  white-space: normal;
+}
+
+.Address,
+.ApplicantsTableItemApplicationLocation{
+  width: 200px;
+}
+
+.ApplicantsTableItemApplicationLocation p{
+  margin: 0;
+  font-size: 14px;
+}
+
+.DOB,
+.ApplicantsTableItemApplicationDOB{
+  width: 130px;
+}
+
+.Age,
+.ApplicantsTableItemApplicationAge{
+  width: 70px;
+}
+
+.Gender,
+.ApplicantsTableItemApplicationGender{
+  width: 80px;
+}
+
+.Phone_Number,
+.ApplicantsTableItemApplicationPhone{
+  width: 150px;
+}
+
+.Education,
+.ApplicantsTableItemApplicationEducation{
+  width: 150px;
+}
+
+.Felon,
+.ApplicantsTableItemApplicationFelon{
+  width: 80px;
+}
+
+.Last_Interview,
+.ApplicantsTableItemApplicationInterviewDate{
+  width: 150px;
+}
+
+.Rating,
+.ApplicantsTableItemApplicationInterviewRating{
+  width: 80px;
+}
+
+.Action_Buttons,
+.ApplicantsTableItemApplicationActionButtons{
+  width: 280px;
+}
+

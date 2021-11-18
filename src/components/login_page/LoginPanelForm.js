@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import PersonIcon from '../../assets/PersonIcon.png'
 import LoginPanelFormFooter from './LoginPanelFormFooter'
 
-function LoginPanelForm({history, BACK_END_URL, currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn}){
+function LoginPanelForm({loginErrorMessage, setLoginErrorMessage, history, BACK_END_URL, currentUser, setCurrentUser, isLoggedIn, setIsLoggedIn}){
 
     const formDataDefault = {
         company: "",
@@ -15,12 +15,15 @@ function LoginPanelForm({history, BACK_END_URL, currentUser, setCurrentUser, isL
     const [errorMessage, setErrorMessage] = useState("")
 
     function onChangeFormInput(e){
+        if (e.target.name === "remember") 
+            return setFormData({...formData, [e.target.name]: e.target.checked});
+        
         setFormData({...formData, [e.target.name]: e.target.value})
     }
 
     function onClickLoginSubmit(){
-        setErrorMessage("")
-        if(formData.company === "" || formData.username === "" || formData.password === "") return setErrorMessage("Fill Out All Empty Fields");
+        setLoginErrorMessage("")
+        if(formData.company === "" || formData.username === "" || formData.password === "") return setLoginErrorMessage("Fill Out All Empty Fields");
 
         const headers = {
             method: 'POST',
@@ -44,7 +47,7 @@ function LoginPanelForm({history, BACK_END_URL, currentUser, setCurrentUser, isL
                 })
             }else{
                 resp.json().then(message => {
-                    setErrorMessage(message.error)
+                    setLoginErrorMessage(message.error)
                 })
             }
         })
@@ -59,17 +62,17 @@ function LoginPanelForm({history, BACK_END_URL, currentUser, setCurrentUser, isL
                         <img src={PersonIcon} alt="person logo"/>
                     </div>
                     <form>
-                        <input type="text" placeholder="COMPANY" name="company" onChange={onChangeFormInput}/>
-                        <input type="text" placeholder="USERNAME" name="username" onChange={onChangeFormInput}/>
-                        <input type="password" placeholder="PASSWORD" name="password" onChange={onChangeFormInput}/>
+                        <input type="text" placeholder="COMPANY" name="company" value={formData.company} onChange={onChangeFormInput}/>
+                        <input type="text" placeholder="USERNAME" name="username" value={formData.username} onChange={onChangeFormInput}/>
+                        <input type="password" placeholder="PASSWORD" name="password" value={formData.password} onChange={onChangeFormInput}/>
                         <div className="RememberMe">
-                            <input type="checkbox" name="remember"/> 
+                            <input type="checkbox" name="remember" value={formData.remember} checked={formData.remember} onChange={onChangeFormInput}/> 
                             <label>Remember Me</label>   
                         </div>
                     </form>
                     <button className="LoginPanelFormSubmit" onClick={onClickLoginSubmit}>LOGIN</button>
                     <div className="LoginPanelFormErrors">
-                        <p>{errorMessage}</p>
+                        <p>{loginErrorMessage}</p>
                     </div>
                 </div>
             </div>

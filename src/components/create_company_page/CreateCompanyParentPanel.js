@@ -2,29 +2,6 @@ import React from "react";
 
 function CreateCompanyParentPanel({selectedParent, is_parent}){
 
-    // ! Need to change column name in backend to match before can use
-    // const topFieldsArray = ["location"]
-    // const bottomFieldsArray = ["structure", "type", "industry"]
-
-    // const topFields = topFieldsArray.map(field => 
-    //     <>
-    //         <p>{`${field}:`}</p>
-    //         <p>
-    //             {Object.entries(selectedParent).find(obj => obj[0].includes(field))[1]}
-    //         </p>
-    //     </>    
-    // )
-
-    // const bottomFields = bottomFieldsArray.map(field => 
-    //     <div>
-    //         <p>{`${field}:`}</p>
-    //         <p>
-    //             {Object.entries(selectedParent).find(obj => obj[0].includes(field))[1]}
-    //         </p>
-    //     </div>    
-    // )
-
-
     return(
         <div className={`CreateCompanyParentPanel ${is_parent || selectedParent.name === ""? "hidden" : ""}`}>
             <div className="CreateCompanyParentPanelTop">
@@ -51,15 +28,15 @@ function CreateCompanyParentPanel({selectedParent, is_parent}){
                 <div className="CreateCompanyParentPanelBottomRight">
                     <div>
                         <p>Employees: </p>
-                        <p>{selectedParent.employees}</p>
+                        <p>{selectedParent.employees_count}</p>
                     </div>
                     <div>
                         <p>Children: </p>
-                        <p>{selectedParent.children}</p>
+                        <p>{selectedParent.children_count}</p>
                     </div>
                     <div>
-                        <p>Parent?: </p>
-                        <p>{selectedParent.is_parent.toString()}</p>
+                        <p>Parent ? </p>
+                        <p>{selectedParent.is_parent? "Yes" : "No"}</p>
                     </div>
                 </div>
             </div>

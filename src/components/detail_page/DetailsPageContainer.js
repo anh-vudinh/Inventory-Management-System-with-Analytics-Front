@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import DetailsPagePanelDetails from './DetailsPagePanelDetails'
 import DetailsPagePanelTree from './DetailsPagePanelTree'
 
-function DetailsPageContainer({BACK_END_URL, selectedCompany, currentPage, setCurrentPage}){
+function DetailsPageContainer({history, BACK_END_URL, selectedCompany, currentPage, setCurrentPage}){
 
     const [selectedMainCategory, setSelectedMainCategory] = useState("")
     const [selectedSubCategory, setSelectedSubCategory] = useState("")
@@ -20,6 +20,7 @@ function DetailsPageContainer({BACK_END_URL, selectedCompany, currentPage, setCu
                 selectedSubCategory={selectedSubCategory} setSelectedSubCategory={setSelectedSubCategory}
                 selectedEmployee={selectedEmployee} setSelectedEmployee={setSelectedEmployee}
                 BACK_END_URL={BACK_END_URL}
+                history={history}
             />
             <DetailsPagePanelDetails
                 BACK_END_URL={BACK_END_URL}

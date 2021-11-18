@@ -1,7 +1,7 @@
 import React from 'react'
 import CompanySelectCardsContainer from './CompanySelectCardsContainer'
 
-function CompanySelectChildren({history, selectedParentName, setSelectedParentName, selectedCompany, setSelectedCompany, childCompanyArray, setChildCompanyArray, selectedParentCategory, setSelectedParentCategory, MinusIcon, PlusIcon}){
+function CompanySelectChildren({BACK_END_URL, history, selectedParentName, setSelectedParentName, selectedCompany, setSelectedCompany, childCompanyArray, setChildCompanyArray, selectedParentCategory, setSelectedParentCategory, MinusIcon, PlusIcon}){
 
     return(
         <div className={`CompanySelectChildren ${selectedParentCategory? "" : "csExpand"}`}>
@@ -14,11 +14,12 @@ function CompanySelectChildren({history, selectedParentName, setSelectedParentNa
 
             <CompanySelectCardsContainer
                 history={history}
-                cardContainerArray={childCompanyArray}          //cardContainerArray converts childCompanyArray to general variable before passing to CardContainer
-                setChildCompanyArray={setChildCompanyArray}
-                setSelectedParentCategory={setSelectedParentCategory}
-                setSelectedCompany={setSelectedCompany}
+                BACK_END_URL={BACK_END_URL} 
+                cardContainerArray={childCompanyArray} //cardContainerArray converts childCompanyArray to general variable before passing to CardContainer
                 setSelectedParentName={setSelectedParentName}
+                setSelectedParentCategory={setSelectedParentCategory}
+                selectedCompany={selectedCompany} setSelectedCompany={setSelectedCompany}
+                childCompanyArray={childCompanyArray} setChildCompanyArray={setChildCompanyArray}
             />
         </div>
     )

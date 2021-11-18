@@ -5,6 +5,7 @@ function CreateCompanyDetails({setIsLoading, formData, setFormData, handleInputC
 
     const {name, street, city, state, zipcode, established, is_parent, structure, organization, industry, parent_name} = formData
 
+    const [parentsLoading, setParentsLoading] = useState(false)
     const [userCompaniesArray, setUserCompaniesArray] = useState([])
     const [selectedParent, setSelectedParent] = useState({
         name:"",
@@ -22,7 +23,7 @@ function CreateCompanyDetails({setIsLoading, formData, setFormData, handleInputC
     
 
     useEffect(()=>{
-        setIsLoading(true)
+        setParentsLoading(true)
         const headers = {
             withCredentials: true,
             credentials: 'include',
@@ -37,7 +38,7 @@ function CreateCompanyDetails({setIsLoading, formData, setFormData, handleInputC
         .then(resp => resp.json())
         .then(data => {
             setUserCompaniesArray(data)
-            setIsLoading(false)
+            setParentsLoading(false)
         })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
@@ -110,14 +111,22 @@ function CreateCompanyDetails({setIsLoading, formData, setFormData, handleInputC
                         </div>
 
                         <div className="CreateCompanyParent">
+
                             <div className="CreateCompanyParentSelectSec">
-                                <input type="checkbox" name="is_parent" checked={is_parent} onChange={handleInputChange}/>
-                                <p>{is_parent? "(Check) Parent Company" : "Child of: "}</p>
-                                <select className={`CreateCompanyParentSelect ${is_parent? "hidden" : ""}`} name="parent_name" value={parent_name} onChange={handleSelectParent}>
-                                    <option value="-- select an option --">-- select an option --</option>
-                                    {parentCompanies}    
-                                </select>
+                                {parentsLoading? 
+                                    <img src="https://www.policlinico.unina.it/siti/MR/images/loading-green.gif" alt="loading"/>
+                                :   
+                                <>
+                                    <input type="checkbox" name="is_parent" checked={is_parent} onChange={handleInputChange}/>
+                                    <p>{is_parent? "Create Parent Company" : "Child of: "}</p>
+                                    <select className={`CreateCompanyParentSelect ${is_parent? "hidden" : ""}`} name="parent_name" value={parent_name} onChange={handleSelectParent}>
+                                        <option value="-- select an option --">-- select an option --</option>
+                                        {parentCompanies}    
+                                    </select>
+                                </>
+                                }
                             </div>
+                            
                             <CreateCompanyParentPanel
                                 selectedParent={selectedParent}
                                 is_parent={is_parent}

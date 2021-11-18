@@ -16,7 +16,12 @@ function LoginPanelImage(){
     const cycleTimerMS = 8000
 
     useEffect(()=>{
-        setTimeout(()=>setResetStyle(true), 200)
+        const resetStyleID = setTimeout(()=>setResetStyle(true), 200)
+        return ()=>clearTimeout(resetStyleID)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[currentImageIndex])
+
+    useEffect(()=>{
         const imagesArrayCyclerID = setInterval(imagesArrayCycler, cycleTimerMS)
         return ()=> clearInterval(imagesArrayCyclerID)
         // eslint-disable-next-line react-hooks/exhaustive-deps
