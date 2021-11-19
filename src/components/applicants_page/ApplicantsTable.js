@@ -1,7 +1,8 @@
 import React from 'react'
+import LoadingCircle from '../LoadingCircle'
 import ApplicantsTableItem from './ApplicantsTableItem'
 
-function ApplicantsTableContainer({applicantsArray, hireApplicant}){
+function ApplicantsTableContainer({applicantsArray, hireApplicant, isLoading}){
 
     const titlesArray = ["Application Date", "Name", "Address", "DOB", "Age", "Gender", "Phone Number", "Education", "Felon", "Last Interview", "Rating", "Action Buttons"]
 
@@ -44,7 +45,11 @@ function ApplicantsTableContainer({applicantsArray, hireApplicant}){
                     {titles}
                 </div>
                 <div className="ApplicantsTableList">
-                    {listItem}
+                    {isLoading? 
+                        <LoadingCircle/>
+                    :
+                        listItem
+                    }
                 </div>
             </div>
         </div>

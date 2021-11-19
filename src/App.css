@@ -6,6 +6,20 @@
   background-color: whitesmoke;
 }
 
+.LoadingCircle{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.LoadingCircle img{
+  min-width: 10%;
+  width: 45%;
+}
+
 .ToolbarContainer{
   pointer-events: none;
   position: absolute;
@@ -1605,6 +1619,7 @@
 
 .ApplicantsTableList{
   overflow-y: scroll;
+  width: 100%;
 }
 
 .ApplicantsTableList::-webkit-scrollbar {

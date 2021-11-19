@@ -124,7 +124,6 @@ function App() {
         <Route path="/applicants">
           <ApplicantsContainer
             history={history}
-            setIsLoading={setIsLoading}
             BACK_END_URL={BACK_END_URL}
             isLoggedIn={isLoggedIn}
             currentPage={currentPage} setCurrentPage={setCurrentPage}

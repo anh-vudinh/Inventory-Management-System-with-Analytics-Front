@@ -4,12 +4,13 @@ import ApplicantsHeader from './ApplicantsHeader'
 import ApplicantsSuccess from './ApplicantsSuccess'
 import ApplicantsTableContainer from './ApplicantsTable'
 
-function ApplicantsContainer({BACK_END_URL, selectedCompany, setIsLoading, history, isLoggedIn, currentPage, setCurrentPage}){
+function ApplicantsContainer({BACK_END_URL, selectedCompany, history, isLoggedIn, currentPage, setCurrentPage}){
 
     const bgImage = "https://assets.transunion.com/resources/preemployment/img/blogs/content/B-verify-job-applicant-identity-content-D-082517.png"
     const [applicantsArray, setApplicantsArray] = useState([])
     const [errorMessage, setErrorMessage] = useState("")
     const [successMessage, setSuccessMessage] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(()=>{
         if(!isLoggedIn) return history.push("/");
@@ -70,6 +71,7 @@ function ApplicantsContainer({BACK_END_URL, selectedCompany, setIsLoading, histo
             <ApplicantsTableContainer
                 applicantsArray={applicantsArray}
                 hireApplicant={hireApplicant}
+                isLoading={isLoading}
             />
 
             <ApplicantsError

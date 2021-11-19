@@ -1,5 +1,6 @@
 import React,{useEffect, useState} from "react";
 import CreateCompanyParentPanel from "./CreateCompanyParentPanel";
+import LoadingCircle from "../LoadingCircle";
 
 function CreateCompanyDetails({setIsLoading, formData, setFormData, handleInputChange, handleFormSubmit, BACK_END_URL}){
 
@@ -114,7 +115,7 @@ function CreateCompanyDetails({setIsLoading, formData, setFormData, handleInputC
 
                             <div className="CreateCompanyParentSelectSec">
                                 {parentsLoading? 
-                                    <img src="https://www.policlinico.unina.it/siti/MR/images/loading-green.gif" alt="loading"/>
+                                    <LoadingCircle/>
                                 :   
                                 <>
                                     <input type="checkbox" name="is_parent" checked={is_parent} onChange={handleInputChange}/>

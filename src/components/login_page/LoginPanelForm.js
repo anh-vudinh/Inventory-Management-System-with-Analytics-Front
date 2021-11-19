@@ -23,6 +23,7 @@ function LoginPanelForm({loginErrorMessage, setLoginErrorMessage, history, BACK_
 
     function onClickLoginSubmit(){
         setLoginErrorMessage("")
+        if(isLoggedIn && currentUser !== "") return history.push("/company_select")
         if(formData.company === "" || formData.username === "" || formData.password === "") return setLoginErrorMessage("Fill Out All Empty Fields");
 
         const headers = {
@@ -61,16 +62,26 @@ function LoginPanelForm({loginErrorMessage, setLoginErrorMessage, history, BACK_
                     <div className="LoginPanelIcon">
                         <img src={PersonIcon} alt="person logo"/>
                     </div>
-                    <form>
-                        <input type="text" placeholder="COMPANY" name="company" value={formData.company} onChange={onChangeFormInput}/>
-                        <input type="text" placeholder="USERNAME" name="username" value={formData.username} onChange={onChangeFormInput}/>
-                        <input type="password" placeholder="PASSWORD" name="password" value={formData.password} onChange={onChangeFormInput}/>
-                        <div className="RememberMe">
-                            <input type="checkbox" name="remember" value={formData.remember} checked={formData.remember} onChange={onChangeFormInput}/> 
-                            <label>Remember Me</label>   
+                    {isLoggedIn && currentUser !== ""? 
+                        <div>
+                            <p>{`Logged in as: ${currentUser}`}</p>
                         </div>
-                    </form>
-                    <button className="LoginPanelFormSubmit" onClick={onClickLoginSubmit}>LOGIN</button>
+                    :
+                        <form>
+                            <input type="text" placeholder="COMPANY" name="company" value={formData.company} onChange={onChangeFormInput}/>
+                            <input type="text" placeholder="USERNAME" name="username" value={formData.username} onChange={onChangeFormInput}/>
+                            <input type="password" placeholder="PASSWORD" name="password" value={formData.password} onChange={onChangeFormInput}/>
+                            <div className="RememberMe">
+                                <input type="checkbox" name="remember" value={formData.remember} checked={formData.remember} onChange={onChangeFormInput}/> 
+                                <label>Remember Me</label>   
+                            </div>
+                        </form>
+                    }
+
+
+                    <button className="LoginPanelFormSubmit" onClick={onClickLoginSubmit}>
+                        {isLoggedIn && currentUser !== ""? "OKAY" : "LOGIN"}
+                    </button>
                     <div className="LoginPanelFormErrors">
                         <p>{loginErrorMessage}</p>
                     </div>
