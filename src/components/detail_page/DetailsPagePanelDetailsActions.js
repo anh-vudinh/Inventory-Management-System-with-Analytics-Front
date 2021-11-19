@@ -1,6 +1,6 @@
 import React from 'react'
 
-function DetailsPagePanelDetailsActions({employeeFullDetails}){
+function DetailsPagePanelDetailsActions({employeeFullDetails, setCurrentAction}){
 
     const actionBtnsArray = [
         {"Update Information": "https://cdn.onlinewebfonts.com/svg/img_515158.png"}, 
@@ -21,13 +21,12 @@ function DetailsPagePanelDetailsActions({employeeFullDetails}){
 
     const actionBtns = actionBtnsArray.map(obj => 
         <div key={Object.keys(obj)[0]} className="DetailsPagePanelDetailsActionsItem">
-            <div className="DetailsPagePanelDetailsActionsItemImage">
+            <div className="DetailsPagePanelDetailsActionsItemImage" onClick={()=>setCurrentAction(Object.keys(obj)[0])}>
                 <img src={Object.values(obj)[0]} alt={Object.values(obj)[0]}/>
             </div>
             <p>{`${Object.keys(obj)[0]} `}</p>
         </div>  
     )
-
 
 
     return(

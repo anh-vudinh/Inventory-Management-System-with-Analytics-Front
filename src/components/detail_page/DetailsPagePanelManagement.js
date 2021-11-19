@@ -2,7 +2,7 @@ import React from 'react'
 import DetailsPagePanelProducts from './DetailsPagePanelProducts'
 import DetailsPagePanelEmployees from './DetailsPagePanelEmployees'
 
-function DetailsPagePanelManagement({history, BACK_END_URL, selectedMainCategory, setSelectedMainCategory, selectedSubCategory, setSelectedSubCategory, selectedEmployee, setSelectedEmployee, selectedCompany}){
+function DetailsPagePanelManagement({employeesArray, setEmployeesArray, history, BACK_END_URL, selectedMainCategory, setSelectedMainCategory, selectedSubCategory, setSelectedSubCategory, selectedEmployee, setSelectedEmployee, selectedCompany}){
 
     function handleMainCategoryClick(){
         if(selectedMainCategory === "Management"){
@@ -26,6 +26,7 @@ function DetailsPagePanelManagement({history, BACK_END_URL, selectedMainCategory
                 <p>Management</p>
             </div>
             <DetailsPagePanelEmployees
+                employeesArray={employeesArray} setEmployeesArray={setEmployeesArray}
                 selectedCompany={selectedCompany}
                 selectedSubCategory={selectedSubCategory}
                 handleSubCategoryClick={handleSubCategoryClick}

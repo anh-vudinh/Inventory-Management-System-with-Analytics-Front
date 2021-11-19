@@ -4,6 +4,7 @@ import DetailsPagePanelTree from './DetailsPagePanelTree'
 
 function DetailsPageContainer({history, BACK_END_URL, selectedCompany, currentPage, setCurrentPage}){
 
+    const [employeesArray, setEmployeesArray] = useState([])
     const [selectedMainCategory, setSelectedMainCategory] = useState("")
     const [selectedSubCategory, setSelectedSubCategory] = useState("")
     const [selectedEmployee, setSelectedEmployee] = useState({id:0})
@@ -15,6 +16,7 @@ function DetailsPageContainer({history, BACK_END_URL, selectedCompany, currentPa
     return(
         <div className="DetailsPageContainer">
             <DetailsPagePanelTree
+                employeesArray={employeesArray} setEmployeesArray={setEmployeesArray}
                 selectedCompany={selectedCompany}
                 selectedMainCategory={selectedMainCategory} setSelectedMainCategory={setSelectedMainCategory}
                 selectedSubCategory={selectedSubCategory} setSelectedSubCategory={setSelectedSubCategory}
@@ -25,6 +27,9 @@ function DetailsPageContainer({history, BACK_END_URL, selectedCompany, currentPa
             <DetailsPagePanelDetails
                 BACK_END_URL={BACK_END_URL}
                 selectedEmployee={selectedEmployee}
+                selectedCompany={selectedCompany}
+                setSelectedEmployee={setSelectedEmployee}
+                employeesArray={employeesArray} setEmployeesArray={setEmployeesArray}
             />
         </div>
     )

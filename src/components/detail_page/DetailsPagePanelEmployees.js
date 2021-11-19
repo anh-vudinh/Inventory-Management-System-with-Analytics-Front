@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from 'react'
 
-function DetailsPagePanelEmployees({history, BACK_END_URL, handleSubCategoryClick, selectedSubCategory, selectedCompany, selectedEmployee, setSelectedEmployee}){
-
-    const [employeesArray, setEmployeesArray] = useState([])
+function DetailsPagePanelEmployees({employeesArray, setEmployeesArray, history, BACK_END_URL, handleSubCategoryClick, selectedSubCategory, selectedCompany, selectedEmployee, setSelectedEmployee}){
 
     useEffect(()=>{
         if(selectedCompany.name === "") return;

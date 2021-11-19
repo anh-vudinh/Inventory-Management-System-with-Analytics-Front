@@ -2,7 +2,7 @@ import React from 'react'
 import DetailsPagePanelAnalytics from './DetailsPagePanelAnalytics'
 import DetailsPagePanelManagement from './DetailsPagePanelManagement'
 
-function DetailsPagePanelTree({history, BACK_END_URL, selectedCompany, selectedMainCategory, setSelectedMainCategory, selectedSubCategory, setSelectedSubCategory, selectedEmployee, setSelectedEmployee}){
+function DetailsPagePanelTree({employeesArray, setEmployeesArray, history, BACK_END_URL, selectedCompany, selectedMainCategory, setSelectedMainCategory, selectedSubCategory, setSelectedSubCategory, selectedEmployee, setSelectedEmployee}){
 
     return(
         <div className="DetailsPagePanelTree">
@@ -11,6 +11,7 @@ function DetailsPagePanelTree({history, BACK_END_URL, selectedCompany, selectedM
             </div>
             <DetailsPagePanelManagement
                 selectedCompany={selectedCompany}
+                employeesArray={employeesArray} setEmployeesArray={setEmployeesArray}
                 selectedMainCategory={selectedMainCategory} setSelectedMainCategory={setSelectedMainCategory}
                 selectedSubCategory={selectedSubCategory} setSelectedSubCategory={setSelectedSubCategory}
                 selectedEmployee={selectedEmployee} setSelectedEmployee={setSelectedEmployee}

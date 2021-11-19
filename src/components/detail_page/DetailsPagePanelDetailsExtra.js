@@ -5,7 +5,7 @@ function DetailsPagePanelDetailsExtra({employeeFullDetails}){
     const {street_address, city, state, zipcode, phone_number, email, dob, age, gender, start_hire, end_hire, is_citizen, citizenship_type, is_felon, is_veteran, highest_education, emergency_contact_name, emergency_contact_relation, emergency_contact_info} = employeeFullDetails
 
     const extraDetailsArray = [
-        {"Location": `${street_address}, ${city}, ${state}, ${zipcode}`}, 
+        {"Location": `${!street_address? "" : `${street_address}`}${!city? "" : `, ${city}`}${!state? "" : `, ${state}`}${!zipcode? "" : `, ${zipcode}`}`}, 
         {"Phone Number": phone_number},
         {"Email": email},
         {"D.O.B": `${!dob? "" : parseDate(dob)}`},

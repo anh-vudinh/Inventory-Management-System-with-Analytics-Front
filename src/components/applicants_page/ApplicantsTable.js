@@ -44,13 +44,13 @@ function ApplicantsTableContainer({applicantsArray, hireApplicant, isLoading}){
                 <div className="ApplicantsTableHeaders">
                     {titles}
                 </div>
-                <div className="ApplicantsTableList">
-                    {isLoading? 
-                        <LoadingCircle/>
-                    :
-                        listItem
-                    }
-                </div>
+                {isLoading? 
+                    <LoadingCircle/>
+                :
+                    <div className="ApplicantsTableList">
+                        {listItem}
+                    </div>
+                }
             </div>
         </div>
 

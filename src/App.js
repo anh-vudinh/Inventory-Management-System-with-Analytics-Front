@@ -10,7 +10,7 @@ import Toolbar from './components/Toolbar';
 import ApplicantsContainer from './components/applicants_page/ApplicantsContainer';
 
 function App() {
-
+  const array = []
   const BACK_END_URL = "https://localhost:9292"
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -33,7 +33,7 @@ function App() {
           'Content-Type': 'application/json'
       }
     }
-
+    
     fetch(`${BACK_END_URL}/api/auto_login`, headers)
     .then(resp => {
         if(resp.ok){

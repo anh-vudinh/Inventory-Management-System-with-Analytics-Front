@@ -3,8 +3,12 @@ import React from 'react'
 function ApplicantsTableItem({applicant, index, parseDateTime, parseDate, hireApplicant}){
     const {created_at, first_name, middle_name, last_name, street_address, city, state, zipcode, dob, age, gender, phone_number, highest_education, is_felon, interview_date, interview_rating} = applicant
     
+    function expandListItem(){
+
+    }
+
     return(
-        <div className={`ApplicantsTableItem ${index%2 === 0? "" : "atiAlt"}`}>
+        <div className={`ApplicantsTableItem ${index%2 === 0? "" : "atiAlt"}`} onClick={expandListItem}>
             <div className="ApplicantsTableItemApplicationDate">
                 <p>{parseDateTime(created_at)}</p>
             </div>
@@ -45,7 +49,7 @@ function ApplicantsTableItem({applicant, index, parseDateTime, parseDate, hireAp
                 <button onClick={()=>hireApplicant(applicant)}>Hire</button>
                 <button>Reject</button>
                 <button>Update</button>
-                <button>Delete</button>
+                <button>Archive</button>
             </div>
         </div>
     )
