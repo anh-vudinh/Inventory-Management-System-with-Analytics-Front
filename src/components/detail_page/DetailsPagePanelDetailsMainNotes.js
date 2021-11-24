@@ -3,7 +3,7 @@ import React from 'react'
 function DetailsPagePanelDetailsMainNotes({employeeFullDetails}){
 
     const {notes} = employeeFullDetails
-    console.log(employeeFullDetails)
+
     return(
         <div className="DetailsPagePanelDetailsMainNotes">
             <p>Notes</p>
