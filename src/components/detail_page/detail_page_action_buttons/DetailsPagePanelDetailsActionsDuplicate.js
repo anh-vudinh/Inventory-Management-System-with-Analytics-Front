@@ -10,6 +10,7 @@ function DetailsPagePanelDetailsActionsDuplicate({employeesArray, setEmployeesAr
     
     useEffect(()=>{
         setIsLoading(true)
+        if (selectedEmployee.id === 0) return setErrorMessage("First Select an Employee");
         const headers = {
             withCredentials: true,
             credentials: 'include',
@@ -78,7 +79,12 @@ function DetailsPagePanelDetailsActionsDuplicate({employeesArray, setEmployeesAr
         <div className="DetailsPagePanelDetailsActionsDuplicateOverlay" onDoubleClick={()=>setCurrentAction("")}>
             <div className="DetailsPagePanelDetailsActionsDuplicate">
                 {isLoading?
+                    <>
                         <LoadingCircle/>
+                        <div className="DetailsPagePanelDetailsActionsTransferError">
+                            <p>{errorMessage}</p>
+                        </div>
+                    </>
                 :
                 <>
                     <div className="DetailsPagePanelDetailsActionsDuplicateCompanies">

@@ -10,6 +10,7 @@ function DetailsPagePanelDetailsActionsTransfer({employeesArray, setEmployeesArr
     
     useEffect(()=>{
         setIsLoading(true)
+        if (selectedEmployee.id === 0) return setErrorMessage("First Select an Employee");
         const headers = {
             withCredentials: true,
             credentials: 'include',
@@ -80,7 +81,12 @@ function DetailsPagePanelDetailsActionsTransfer({employeesArray, setEmployeesArr
         <div className="DetailsPagePanelDetailsActionsTransferOverlay" onDoubleClick={()=>setCurrentAction("")}>
             <div className="DetailsPagePanelDetailsActionsTransfer">
                 {isLoading?
+                    <>
                         <LoadingCircle/>
+                        <div className="DetailsPagePanelDetailsActionsTransferError">
+                            <p>{errorMessage}</p>
+                        </div>
+                    </>
                 :
                 <>
                     <div className="DetailsPagePanelDetailsActionsTransferCompanies">
