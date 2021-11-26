@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import DetailsPagePanelDetailsActions from './DetailsPagePanelDetailsActions'
-import DetailsPagePanelDetailsActionsTransfer from './DetailsPagePanelDetailsActionsTransfer'
+import DetailsPagePanelDetailsActionsTransfer from './detail_page_action_buttons/DetailsPagePanelDetailsActionsTransfer'
 import DetailsPagePanelExtra from './DetailsPagePanelDetailsExtra'
 import DetailsPagePanelMain from './DetailsPagePanelDetailsMain'
+import DetailsPagePanelDetailsActionsDuplicate from './detail_page_action_buttons/DetailsPagePanelDetailsActionsDuplicate'
 
 function DetailsPagePanelDetails({employeesArray, setEmployeesArray, setSelectedEmployee, selectedEmployee, BACK_END_URL, selectedCompany}){
 
-    const [employeeFullDetails, setEmployeeFullDetails] = useState({id: "", image: "", first_name: "", middle_name: "", last_name: ""})
+    const [employeeFullDetails, setEmployeeFullDetails] = useState({company_employee: {created_at: ""}, employee:{id: "", image: "", first_name: "", middle_name: "", last_name: ""}})
     const [currentAction, setCurrentAction] = useState("")
 
     useEffect(()=>{
@@ -21,7 +22,7 @@ function DetailsPagePanelDetails({employeesArray, setEmployeesArray, setSelected
             }
         }
 
-        fetch(`${BACK_END_URL}/api/employees/${selectedEmployee.id}`, headers)
+        fetch(`${BACK_END_URL}/api/employees/${selectedCompany.id}/${selectedEmployee.id}`, headers)
         .then(resp => resp.json())
         .then(data => {
             setEmployeeFullDetails(data)
@@ -52,18 +53,33 @@ function DetailsPagePanelDetails({employeesArray, setEmployeesArray, setSelected
     return(
         <div className="DetailsPagePanelDetails">
             <DetailsPagePanelMain
-                employeeFullDetails={employeeFullDetails}
+                employeeFullDetails={employeeFullDetails.employee}
             />
             <DetailsPagePanelExtra
-                employeeFullDetails={employeeFullDetails}
+                employeeFullDetails={employeeFullDetails.employee}
+                employeeCE={employeeFullDetails.company_employee}
             />
             <DetailsPagePanelDetailsActions
-                employeeFullDetails={employeeFullDetails}
+                employeeFullDetails={employeeFullDetails.employee}
+                employeeCE={employeeFullDetails.company_employee}
                 setCurrentAction={setCurrentAction}
             />
 
             {currentAction === "Transfer Employee"?
                 <DetailsPagePanelDetailsActionsTransfer
+                    employeesArray={employeesArray} setEmployeesArray={setEmployeesArray}
+                    setCurrentAction={setCurrentAction}
+                    BACK_END_URL={BACK_END_URL}
+                    fetchDB={fetchDB}
+                    selectedCompany={selectedCompany}
+                    selectedEmployee={selectedEmployee}
+                    setSelectedEmployee={setSelectedEmployee}
+                />
+            :
+                null
+            }
+            {currentAction === "Duplicate Employee"?
+                <DetailsPagePanelDetailsActionsDuplicate
                     employeesArray={employeesArray} setEmployeesArray={setEmployeesArray}
                     setCurrentAction={setCurrentAction}
                     BACK_END_URL={BACK_END_URL}

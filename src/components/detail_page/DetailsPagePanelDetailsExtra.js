@@ -1,6 +1,6 @@
 import React from 'react'
 
-function DetailsPagePanelDetailsExtra({employeeFullDetails}){
+function DetailsPagePanelDetailsExtra({employeeFullDetails, employeeCE}){
 
     const {street_address, city, state, zipcode, phone_number, email, dob, age, gender, start_hire, end_hire, is_citizen, citizenship_type, is_felon, is_veteran, highest_education, emergency_contact_name, emergency_contact_relation, emergency_contact_info} = employeeFullDetails
 
@@ -11,7 +11,7 @@ function DetailsPagePanelDetailsExtra({employeeFullDetails}){
         {"D.O.B": `${!dob? "" : parseDate(dob)}`},
         {"Age": age},
         {"Gender": gender},
-        {"Hire Date": `${!start_hire? "" : parseDate(start_hire)}`},
+        {"Hire Date": `${!employeeCE.created_at? "" : parseDate(employeeCE.created_at)}`},
         {"Last Date": `${!end_hire? "" : parseDate(end_hire)}`},
         {"Citizen": is_citizen},
         {"Citizenship Type": citizenship_type},

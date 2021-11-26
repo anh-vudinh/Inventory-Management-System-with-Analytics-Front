@@ -1,6 +1,6 @@
 import React from 'react'
 
-function DetailsPagePanelDetailsActions({employeeFullDetails, setCurrentAction}){
+function DetailsPagePanelDetailsActions({employeeFullDetails, setCurrentAction, employeeCE}){
 
     const actionBtnsArray = [
         {"Update Information": "https://cdn.onlinewebfonts.com/svg/img_515158.png"}, 

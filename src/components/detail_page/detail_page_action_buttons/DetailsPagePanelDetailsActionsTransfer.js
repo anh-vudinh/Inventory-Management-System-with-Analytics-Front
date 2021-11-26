@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import LoadingCircle from '../LoadingCircle'
+import LoadingCircle from '../../LoadingCircle'
 
 function DetailsPagePanelDetailsActionsTransfer({employeesArray, setEmployeesArray, selectedEmployee, setSelectedEmployee, selectedCompany, setCurrentAction, BACK_END_URL}){
 

@@ -1736,7 +1736,8 @@
   width: 280px;
 }
 
-.DetailsPagePanelDetailsActionsTransferOverlay{
+.DetailsPagePanelDetailsActionsTransferOverlay,
+.DetailsPagePanelDetailsActionsDuplicateOverlay{
   position: absolute;
   height: 100%;
   width: 100%;
@@ -1746,7 +1747,8 @@
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-.DetailsPagePanelDetailsActionsTransfer{
+.DetailsPagePanelDetailsActionsTransfer,
+.DetailsPagePanelDetailsActionsDuplicate{
   position: relative;
   display: flex;
   flex-direction: column;
@@ -1759,33 +1761,40 @@
   border-radius: 10px;
 }
 
-.DetailsPagePanelDetailsActionsTransferCompanies{
+.DetailsPagePanelDetailsActionsTransferCompanies,
+.DetailsPagePanelDetailsActionsDuplicateCompanies{
   position: relative;
   display: flex;
   flex-direction: row;
   align-items: center;
   text-align: center;
+  justify-content: center;
+  width: 90%;
 }
 
-.DetailsPagePanelDetailsActionsTransferCompanies p:first-child{
+.DetailsPagePanelDetailsActionsTransferCompanies p:first-child,
+.DetailsPagePanelDetailsActionsDuplicateCompanies p:first-child{
   font-size: 24px;
   font-weight: 700;
   margin: 0;
 }
 
-.DetailsPagePanelDetailsActionsTransferCompanies img{
+.DetailsPagePanelDetailsActionsTransferCompanies img,
+.DetailsPagePanelDetailsActionsDuplicateCompanies img{
   height: 20px;
   margin: 0 15px 0 15px;
 }
 
-.DetailsPagePanelDetailsActionsTransferCompanies select{
+.DetailsPagePanelDetailsActionsTransferCompanies select,
+.DetailsPagePanelDetailsActionsDuplicateCompanies select{
   height: 35px;
   font-size: 18px;
   background-color: transparent;
 }
 
 
-.DetailsPagePanelDetailsActionsTransferSubmit button{
+.DetailsPagePanelDetailsActionsTransferSubmit button,
+.DetailsPagePanelDetailsActionsDuplicateSubmit button{
   height: 35px;
   width: 150px;
   border-radius: 15px;
@@ -1796,12 +1805,14 @@
   font-size: 16px;
 }
 
-.DetailsPagePanelDetailsActionsTransferError{
+.DetailsPagePanelDetailsActionsTransferError,
+.DetailsPagePanelDetailsActionsDuplicateError{
   color: red;
   font-size: 18px;
   font-weight: 600;
 }
 
-.DetailsPagePanelDetailsActionsTransferError p{
+.DetailsPagePanelDetailsActionsTransferError p,
+.DetailsPagePanelDetailsActionsDuplicateError p{
   margin: 10px 0 10px 0;
 }
