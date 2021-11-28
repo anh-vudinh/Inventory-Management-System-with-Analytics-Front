@@ -1748,7 +1748,9 @@
 }
 
 .DetailsPagePanelDetailsActionsTransferContainer,
-.DetailsPagePanelDetailsActionsDuplicateContainer{
+.DetailsPagePanelDetailsActionsDuplicateContainer,
+.DetailsPagePanelDetailsActionsCreateUserContainer,
+.DetailsPagePanelDetailsActionsEnableDisableUserContainer{
   pointer-events: none;
   position: absolute;
   display: flex;
@@ -1756,6 +1758,46 @@
   align-items: center;
   width: 100%;
   height: 100%;
+}
+
+.DetailsPagePanelDetailsActionsCreateUser,
+.DetailsPagePanelDetailsActionsEnableDisableUser{
+  pointer-events: all;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: whitesmoke;
+  border-radius: 5px;
+  height: 400px;
+  width: 400px;
+  overflow: hidden;
+}
+
+.DetailsPagePanelDetailsActionsCreateUserForm{
+  margin-top: 35px;
+  width: 90%;
+  height: 50%;
+}
+
+.DetailsPagePanelDetailsActionsCreateUserForm form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(200, 200, 200);
+  border-radius: 5px;
+  height: 100%;
+  justify-content: space-evenly;
+}
+
+.DetailsPagePanelDetailsActionsCreateUserForm input{
+  margin: 10px 0 10px 0;
+  height: 30px;
+  width: 90%;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
 }
 
 .DetailsPagePanelDetailsActionsTransfer,
@@ -1806,7 +1848,8 @@
 
 
 .DetailsPagePanelDetailsActionsTransferSubmit button,
-.DetailsPagePanelDetailsActionsDuplicateSubmit button{
+.DetailsPagePanelDetailsActionsDuplicateSubmit button,
+.DetailsPagePanelDetailsActionsCreateUserSubmit button {
   height: 35px;
   width: 150px;
   border-radius: 15px;
@@ -1818,13 +1861,15 @@
 }
 
 .DetailsPagePanelDetailsActionsTransferError,
-.DetailsPagePanelDetailsActionsDuplicateError{
+.DetailsPagePanelDetailsActionsDuplicateError,
+.DetailsPagePanelDetailsActionsCreateUserError{
   color: red;
   font-size: 18px;
   font-weight: 600;
 }
 
 .DetailsPagePanelDetailsActionsTransferError p,
-.DetailsPagePanelDetailsActionsDuplicateError p{
+.DetailsPagePanelDetailsActionsDuplicateError p,
+.DetailsPagePanelDetailsActionsCreateUserError p{
   margin: 10px 0 10px 0;
 }

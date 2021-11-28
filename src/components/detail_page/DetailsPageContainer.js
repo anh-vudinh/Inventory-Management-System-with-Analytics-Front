@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react'
 import DetailsPagePanelDetails from './DetailsPagePanelDetails'
 import DetailsPagePanelTree from './DetailsPagePanelTree'
+import DetailsPagePanelDetailsActionsCreateUser from './detail_page_action_buttons/DetailsPagePanelDetailsActionsCreateUser'
 import DetailsPagePanelDetailsActionsDuplicate from './detail_page_action_buttons/DetailsPagePanelDetailsActionsDuplicate'
+import DetailsPagePanelDetailsActionsEnableDisableUser from './detail_page_action_buttons/DetailsPagePanelDetailsActionsEnableDisableUser'
 import DetailsPagePanelDetailsActionsTransfer from './detail_page_action_buttons/DetailsPagePanelDetailsActionsTransfer'
 
 function DetailsPageContainer({history, BACK_END_URL, selectedCompany, currentPage, setCurrentPage}){
@@ -53,6 +55,20 @@ function DetailsPageContainer({history, BACK_END_URL, selectedCompany, currentPa
                             setCurrentAction={setCurrentAction}
                             BACK_END_URL={BACK_END_URL}
                             fetchDB={fetchDB}
+                            selectedCompany={selectedCompany}
+                            selectedEmployee={selectedEmployee} setSelectedEmployee={setSelectedEmployee}
+                        />;
+            case "Create User Login":
+                return <DetailsPagePanelDetailsActionsCreateUser
+                            BACK_END_URL={BACK_END_URL}
+                            setCurrentAction={setCurrentAction}
+                            selectedCompany={selectedCompany}
+                            selectedEmployee={selectedEmployee} setSelectedEmployee={setSelectedEmployee}
+                        />;
+            case "Enable/Disable User":
+                return <DetailsPagePanelDetailsActionsEnableDisableUser
+                            BACK_END_URL={BACK_END_URL}
+                            setCurrentAction={setCurrentAction}
                             selectedCompany={selectedCompany}
                             selectedEmployee={selectedEmployee} setSelectedEmployee={setSelectedEmployee}
                         />;
