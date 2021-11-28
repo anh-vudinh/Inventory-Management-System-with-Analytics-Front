@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import LoadingCircle from '../../LoadingCircle'
+import Overlay from '../../Overlay'
 
 function DetailsPagePanelDetailsActionsDuplicate({employeesArray, setEmployeesArray, selectedEmployee, setSelectedEmployee, selectedCompany, setCurrentAction, BACK_END_URL}){
 
@@ -76,36 +77,41 @@ function DetailsPagePanelDetailsActionsDuplicate({employeesArray, setEmployeesAr
     }
 
     return(
-        <div className="DetailsPagePanelDetailsActionsDuplicateOverlay" onDoubleClick={()=>setCurrentAction("")}>
-            <div className="DetailsPagePanelDetailsActionsDuplicate">
-                {isLoading?
+        <>
+            <Overlay
+                setCurrentAction={setCurrentAction}
+            />
+            <div className="DetailsPagePanelDetailsActionsDuplicateContainer">
+                <div className="DetailsPagePanelDetailsActionsDuplicate">
+                    {isLoading?
+                        <>
+                            <LoadingCircle/>
+                            <div className="DetailsPagePanelDetailsActionsTransferError">
+                                <p>{errorMessage}</p>
+                            </div>
+                        </>
+                    :
                     <>
-                        <LoadingCircle/>
-                        <div className="DetailsPagePanelDetailsActionsTransferError">
+                        <div className="DetailsPagePanelDetailsActionsDuplicateCompanies">
+                            <p>{selectedCompany.name}</p>
+                            <img src="https://cdn4.iconfinder.com/data/icons/arrows-64/43/double-arrow-right-bolded-512.png" alt="Duplicate to arrow"/>
+
+                                <select value={formData.name} onChange={handleInputChange}>
+                                    <option value="">-- select an option --</option>
+                                    {companyList}
+                                </select>
+                        </div>
+                        <div className="DetailsPagePanelDetailsActionsDuplicateError">
                             <p>{errorMessage}</p>
                         </div>
+                        <div className="DetailsPagePanelDetailsActionsDuplicateSubmit">
+                            <button onClick={handleSubmit}>DUPLICATE</button>
+                        </div>
                     </>
-                :
-                <>
-                    <div className="DetailsPagePanelDetailsActionsDuplicateCompanies">
-                        <p>{selectedCompany.name}</p>
-                        <img src="https://cdn4.iconfinder.com/data/icons/arrows-64/43/double-arrow-right-bolded-512.png" alt="Duplicate to arrow"/>
-
-                            <select value={formData.name} onChange={handleInputChange}>
-                                <option value="">-- select an option --</option>
-                                {companyList}
-                            </select>
-                    </div>
-                    <div className="DetailsPagePanelDetailsActionsDuplicateError">
-                        <p>{errorMessage}</p>
-                    </div>
-                    <div className="DetailsPagePanelDetailsActionsDuplicateSubmit">
-                        <button onClick={handleSubmit}>DUPLICATE</button>
-                    </div>
-                </>
-                }
+                    }
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 

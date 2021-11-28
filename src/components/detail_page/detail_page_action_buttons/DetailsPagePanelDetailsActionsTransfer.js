@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import LoadingCircle from '../../LoadingCircle'
+import Overlay from '../../Overlay'
 
 function DetailsPagePanelDetailsActionsTransfer({employeesArray, setEmployeesArray, selectedEmployee, setSelectedEmployee, selectedCompany, setCurrentAction, BACK_END_URL}){
 
@@ -78,36 +79,41 @@ function DetailsPagePanelDetailsActionsTransfer({employeesArray, setEmployeesArr
     }
 
     return(
-        <div className="DetailsPagePanelDetailsActionsTransferOverlay" onDoubleClick={()=>setCurrentAction("")}>
-            <div className="DetailsPagePanelDetailsActionsTransfer">
-                {isLoading?
+        <>
+            <Overlay
+                setCurrentAction={setCurrentAction}
+            />
+            <div className="DetailsPagePanelDetailsActionsTransferContainer">
+                <div className="DetailsPagePanelDetailsActionsTransfer">
+                    {isLoading?
+                        <>
+                            <LoadingCircle/>
+                            <div className="DetailsPagePanelDetailsActionsTransferError">
+                                <p>{errorMessage}</p>
+                            </div>
+                        </>
+                    :
                     <>
-                        <LoadingCircle/>
+                        <div className="DetailsPagePanelDetailsActionsTransferCompanies">
+                            <p>{selectedCompany.name}</p>
+                            <img src="https://cdn4.iconfinder.com/data/icons/arrows-64/43/double-arrow-right-bolded-512.png" alt="transfer to arrow"/>
+
+                                <select value={formData.name} onChange={handleInputChange}>
+                                    <option value="">-- select an option --</option>
+                                    {companyList}
+                                </select>
+                        </div>
                         <div className="DetailsPagePanelDetailsActionsTransferError">
                             <p>{errorMessage}</p>
                         </div>
+                        <div className="DetailsPagePanelDetailsActionsTransferSubmit">
+                            <button onClick={handleSubmit}>TRANSFER</button>
+                        </div>
                     </>
-                :
-                <>
-                    <div className="DetailsPagePanelDetailsActionsTransferCompanies">
-                        <p>{selectedCompany.name}</p>
-                        <img src="https://cdn4.iconfinder.com/data/icons/arrows-64/43/double-arrow-right-bolded-512.png" alt="transfer to arrow"/>
-
-                            <select value={formData.name} onChange={handleInputChange}>
-                                <option value="">-- select an option --</option>
-                                {companyList}
-                            </select>
-                    </div>
-                    <div className="DetailsPagePanelDetailsActionsTransferError">
-                        <p>{errorMessage}</p>
-                    </div>
-                    <div className="DetailsPagePanelDetailsActionsTransferSubmit">
-                        <button onClick={handleSubmit}>TRANSFER</button>
-                    </div>
-                </>
-                }
+                    }
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 

@@ -16,7 +16,9 @@ function DetailsPagePanelEmployees({employeesArray, setEmployeesArray, history, 
 
         fetch(`${BACK_END_URL}/api/get_employees/${selectedCompany.id}`, headers)
         .then(resp => resp.json())
-        .then(data => setEmployeesArray(data))
+        .then(data => {
+            setEmployeesArray(data)
+        })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 

@@ -1736,20 +1736,32 @@
   width: 280px;
 }
 
-.DetailsPagePanelDetailsActionsTransferOverlay,
-.DetailsPagePanelDetailsActionsDuplicateOverlay{
+.Overlay{
   position: absolute;
   height: 100%;
   width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.Overlay p:first-child{
+  color: rgb(200, 200, 200);
+}
+
+.DetailsPagePanelDetailsActionsTransferContainer,
+.DetailsPagePanelDetailsActionsDuplicateContainer{
+  pointer-events: none;
+  position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
 }
 
 .DetailsPagePanelDetailsActionsTransfer,
 .DetailsPagePanelDetailsActionsDuplicate{
-  position: relative;
+  pointer-events: all;
+  position: absolute;
   display: flex;
   flex-direction: column;
   justify-content: center;
